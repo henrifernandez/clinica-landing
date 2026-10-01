@@ -1,11 +1,12 @@
 import { site } from "@/content/site";
 import { getWhatsAppNumber } from "@/lib/whatsapp";
+import { getSiteUrl } from "@/lib/site-url";
 
 const { clinic, seo } = site;
 
 /** Dados estruturados `Dentist`, todos vindos de site.ts e do .env. */
 export function JsonLd() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const siteUrl = getSiteUrl();
 
   const data = {
     "@context": "https://schema.org",

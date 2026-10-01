@@ -8,6 +8,7 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { Analytics } from "@/components/Analytics";
 import { MOTION_FLAG_SCRIPT } from "@/lib/motion";
 import { site } from "@/content/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
