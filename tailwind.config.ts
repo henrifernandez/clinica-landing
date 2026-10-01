@@ -1,0 +1,85 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: ["./src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        bg: "var(--bg)",
+        "bg-2": "var(--bg-2)",
+        surface: "var(--surface)",
+        ink: "var(--ink)",
+        muted: "var(--muted)",
+        line: "var(--line)",
+        accent: "var(--accent)",
+        "accent-hover": "var(--accent-hover)",
+        "accent-soft": "var(--accent-soft)",
+        sage: "var(--sage)",
+        "sage-text": "var(--sage-text)",
+        "clay-strong": "var(--clay-strong)",
+        "wa-dot": "var(--whatsapp-dot)",
+        clay: "var(--clay)",
+        "on-accent": "var(--on-accent)",
+        "on-accent-muted": "var(--on-accent-muted)",
+      },
+      fontFamily: {
+        serif: ["var(--font-fraunces)", "Georgia", "serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        xs: "var(--text-xs)",
+        sm: "var(--text-sm)",
+        base: "var(--text-base)",
+        lg: "var(--text-lg)",
+        h3: "var(--text-h3)",
+        h2: "var(--text-h2)",
+        h1: "var(--text-h1)",
+        cta: "var(--text-cta)",
+        logo: "var(--text-logo)",
+        h4: "var(--text-h4)",
+        quote: "var(--text-quote)",
+        stat: "var(--text-stat)",
+      },
+      spacing: {
+        "1": "var(--space-1)",
+        "2": "var(--space-2)",
+        "3": "var(--space-3)",
+        "4": "var(--space-4)",
+        "5": "var(--space-5)",
+        "6": "var(--space-6)",
+        "8": "var(--space-8)",
+        "10": "var(--space-10)",
+        "12": "var(--space-12)",
+        "16": "var(--space-16)",
+        "20": "var(--space-20)",
+        "24": "var(--space-24)",
+        "30": "var(--space-30)",
+      },
+      borderRadius: {
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
+        pill: "var(--radius-pill)",
+      },
+      boxShadow: {
+        float: "var(--shadow-float)",
+        cta: "var(--shadow-cta)",
+      },
+      maxWidth: { container: "var(--container)" },
+      transitionTimingFunction: {
+        "out-expo": "var(--ease-out-expo)",
+        "out-quint": "var(--ease-out-quint)",
+        in: "var(--ease-in)",
+      },
+      transitionDuration: {
+        micro: "var(--dur-micro)",
+        hover: "var(--dur-hover)",
+        fill: "var(--dur-fill)",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;

@@ -1,0 +1,431 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: var(--bg);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-dm-sans), system-ui, sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+}
+
+/* Lenis (rolagem suave). Sem scroll-behavior nativo para não brigar com ele. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+@layer components {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  /* Botões. Só transform e cor animam, camada de preenchimento sobe com translateY. */
+  .btn {
+    /* entra com ease-out, sai com ease-in */
+    --ease-state: var(--ease-in);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    min-height: 2.75rem;
+    padding: 0.875rem 1.625rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      color var(--dur-btn) var(--ease-state),
+      transform var(--dur-micro) var(--ease-state);
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--ink);
+    transform: translateY(101%);
+    transition: transform var(--dur-btn) var(--ease-state);
+  }
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    transform: translateY(0);
+  }
+  .btn:hover,
+  .btn:focus-visible {
+    --ease-state: var(--ease-out-quint);
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Tabela de tratamentos (direção D). Só transform, opacity e cor animam. */
+  .tr {
+    --ease-state: var(--ease-in);
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: var(--space-2) var(--space-4);
+    align-items: center;
+    padding: var(--space-6) 1.375rem;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color var(--dur-hover) var(--ease-state);
+  }
+  .tr::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform var(--dur-fill) var(--ease-state);
+  }
+  .tr > :not(.tr-n) {
+    grid-column: 2;
+  }
+  .tr-n {
+    grid-row: span 4;
+    align-self: start;
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: 1.15rem;
+    color: var(--sage-text);
+    transition: color var(--dur-hover) var(--ease-state);
+  }
+  .tr-main::after {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: var(--clay);
+  }
+  .tr-title {
+    font-size: var(--text-h3);
+    transition: transform var(--dur-fill) var(--ease-state);
+  }
+  .tr-text {
+    max-width: 44ch;
+    font-size: var(--text-sm);
+    color: var(--muted);
+    transition: color var(--dur-hover) var(--ease-state);
+  }
+  .tr-time {
+    font-size: var(--text-xs);
+    color: var(--muted);
+    transition: color var(--dur-hover) var(--ease-state);
+  }
+  .tr-arrow {
+    justify-self: start;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--clay-strong);
+    transition:
+      transform var(--dur-hover) var(--ease-state),
+      color var(--dur-hover) var(--ease-state);
+  }
+
+  @media (min-width: 860px) {
+    .tr {
+      grid-template-columns: 4.5rem 1.1fr 1.3fr 9.375rem 2.5rem;
+      gap: var(--space-6);
+      padding: 2.125rem 2.25rem;
+    }
+    .tr > :not(.tr-n) {
+      grid-column: auto;
+    }
+    .tr-n {
+      grid-row: auto;
+      align-self: center;
+    }
+    .tr-arrow {
+      justify-self: end;
+    }
+  }
+
+  /* Preenchimento no hover (mouse) e no foco por teclado (qualquer dispositivo). */
+  .tr:focus-visible {
+    --ease-state: var(--ease-out-quint);
+    color: var(--on-accent);
+    outline-color: var(--surface);
+    outline-offset: -6px;
+    border-radius: 0;
+  }
+  .tr:focus-visible::before {
+    transform: scaleY(1);
+  }
+  .tr:focus-visible .tr-title {
+    transform: translateX(10px);
+  }
+  .tr:focus-visible .tr-n,
+  .tr:focus-visible .tr-arrow {
+    color: var(--accent-soft);
+  }
+  .tr:focus-visible .tr-text,
+  .tr:focus-visible .tr-time {
+    color: var(--on-accent-muted);
+  }
+  .tr:focus-visible .tr-arrow {
+    transform: translate(4px, -4px);
+  }
+
+  @media (hover: hover) {
+    .tr:hover {
+      --ease-state: var(--ease-out-quint);
+      color: var(--on-accent);
+    }
+    .tr:hover::before {
+      transform: scaleY(1);
+    }
+    .tr:hover .tr-title {
+      transform: translateX(10px);
+    }
+    .tr:hover .tr-n,
+    .tr:hover .tr-arrow {
+      color: var(--accent-soft);
+    }
+    .tr:hover .tr-text,
+    .tr:hover .tr-time {
+      color: var(--on-accent-muted);
+    }
+    .tr:hover .tr-arrow {
+      transform: translate(4px, -4px);
+    }
+  }
+
+  /* Acordeão do FAQ. Abre com grid-template-rows e opacity (250 a 350 ms). */
+  .faq-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      grid-template-rows 300ms var(--ease-in),
+      opacity 200ms var(--ease-in),
+      visibility 0s linear 300ms;
+  }
+  .faq-panel[data-open="true"] {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      grid-template-rows 300ms var(--ease-out-quint),
+      opacity 300ms var(--ease-out-quint),
+      visibility 0s;
+  }
+  .faq-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--clay-strong);
+    transition: transform var(--dur-micro) var(--ease-out-quint);
+  }
+  [aria-expanded="true"] > .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  /* Botão flutuante: entra com opacity e scale .8 a 1 (500 ms), sai mais rápido com ease-in. */
+  .wa-float {
+    position: fixed;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    z-index: 30;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transform-origin: bottom right;
+    transition:
+      opacity 200ms var(--ease-in),
+      transform 200ms var(--ease-in),
+      visibility 0s linear 200ms;
+  }
+  .wa-float[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition:
+      opacity 500ms var(--ease-out-quint),
+      transform 500ms var(--ease-out-quint),
+      visibility 0s;
+  }
+  .wa-float-btn {
+    min-width: 2.75rem;
+    box-shadow: var(--shadow-cta), 0 0 0 2px var(--surface);
+  }
+
+  .btn-lg {
+    min-height: 3.5rem;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .btn-ghost::before {
+    background: var(--surface);
+  }
+
+  .btn-light {
+    background: var(--surface);
+    color: var(--accent);
+  }
+  .btn-light::before {
+    background: var(--accent-soft);
+  }
+}
+
+/* Foco visível sobre fundos escuros. */
+.on-dark :focus-visible {
+  outline-color: var(--surface);
+}
+
+/* Link para pular ao conteúdo, visível só com foco. */
+.skip-link {
+  position: fixed;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: 50;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--surface);
+  font-size: var(--text-sm);
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-color: var(--surface);
+}
+#conteudo:focus {
+  outline: none;
+}
+
+/* Hero */
+.hero-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.08em 0.14em 0;
+  margin-bottom: -0.14em;
+}
+.hero-word {
+  display: inline-block;
+}
+.hero-blob {
+  border-radius: 46% 54% 42% 58% / 38% 40% 60% 62%;
+}
+.hero-float {
+  max-width: 11.5rem;
+  padding: 0.875rem 1.125rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-float);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--muted);
+}
+.hero-float b {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Estado inicial do hero, só com movimento liberado. */
+html[data-motion="on"] [data-hero="eyebrow"],
+html[data-motion="on"] [data-hero="actions"],
+html[data-motion="on"] [data-hero="float"],
+html[data-motion="on"] [data-hero="seal"] {
+  opacity: 0;
+}
+/* Subtítulo e visual são candidatos a LCP: ficam visíveis no HTML e animam só transform. */
+html[data-motion="on"] [data-hero="lead"] {
+  transform: translateY(20px);
+}
+html[data-motion="on"] [data-hero="visual-inner"] {
+  transform: scale(1.06);
+}
+html[data-motion="on"] [data-hero="word"] {
+  transform: translateY(110%);
+}
+
+/* Revelação em escada. Escondido só quando o movimento está liberado. */
+html[data-motion="on"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+/* Movimento reduzido: tudo posicionado, sem fade, só cor e foco. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
