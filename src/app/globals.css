@@ -10,7 +10,7 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: var(--font-dm-sans), system-ui, sans-serif;
+    font-family: var(--font-figtree), system-ui, sans-serif;
     font-size: var(--text-base);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
@@ -20,15 +20,10 @@
   h1,
   h2,
   h3 {
-    font-family: var(--font-fraunces), Georgia, serif;
-    font-weight: 300;
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-weight: 400;
     line-height: 1.05;
-    letter-spacing: -0.02em;
-  }
-
-  em {
-    font-style: italic;
-    color: var(--accent);
+    letter-spacing: -0.01em;
   }
 
   :focus-visible {
@@ -38,7 +33,7 @@
   }
 
   ::selection {
-    background: var(--accent-soft);
+    background: var(--bg-2);
     color: var(--ink);
   }
 }
@@ -56,20 +51,6 @@ html.lenis body {
 }
 
 @layer components {
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
-    font-size: var(--text-sm);
-    color: var(--muted);
-  }
-  .eyebrow::before {
-    content: "";
-    width: 1.75rem;
-    height: 1px;
-    background: var(--sage);
-  }
-
   /* Botões. Só transform e cor animam, camada de preenchimento sobe com translateY. */
   .btn {
     /* entra com ease-out, sai com ease-in */
@@ -115,7 +96,7 @@ html.lenis body {
     transform: scale(0.98);
   }
 
-  /* Tabela de tratamentos (direção D). Só transform, opacity e cor animam. */
+  /* Tabela de tratamentos (estrutura da direção D, tokens da E). Só transform, opacity e cor animam. */
   .tr {
     --ease-state: var(--ease-in);
     position: relative;
@@ -145,9 +126,10 @@ html.lenis body {
   .tr-n {
     grid-row: span 4;
     align-self: start;
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-newsreader), Georgia, serif;
     font-size: 1.15rem;
-    color: var(--sage-text);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
     transition: color var(--dur-hover) var(--ease-state);
   }
   .tr-main::after {
@@ -158,7 +140,7 @@ html.lenis body {
     margin-left: 8px;
     vertical-align: middle;
     border-radius: 50%;
-    background: var(--clay);
+    background: var(--brass);
   }
   .tr-title {
     font-size: var(--text-h3);
@@ -177,9 +159,8 @@ html.lenis body {
   }
   .tr-arrow {
     justify-self: start;
-    font-size: 1.3rem;
-    line-height: 1;
-    color: var(--clay-strong);
+    line-height: 0;
+    color: var(--ink);
     transition:
       transform var(--dur-hover) var(--ease-state),
       color var(--dur-hover) var(--ease-state);
@@ -219,7 +200,7 @@ html.lenis body {
   }
   .tr:focus-visible .tr-n,
   .tr:focus-visible .tr-arrow {
-    color: var(--accent-soft);
+    color: var(--on-accent-muted);
   }
   .tr:focus-visible .tr-text,
   .tr:focus-visible .tr-time {
@@ -242,7 +223,7 @@ html.lenis body {
     }
     .tr:hover .tr-n,
     .tr:hover .tr-arrow {
-      color: var(--accent-soft);
+      color: var(--on-accent-muted);
     }
     .tr:hover .tr-text,
     .tr:hover .tr-time {
@@ -250,6 +231,20 @@ html.lenis body {
     }
     .tr:hover .tr-arrow {
       transform: translate(4px, -4px);
+    }
+  }
+
+  /* Cartões da equipe: mesmo tamanho, e no hover (mouse) o cartão cresce. Só transform. */
+  .team-card {
+    --ease-state: var(--ease-in);
+    position: relative;
+    transition: transform var(--dur-btn) var(--ease-state);
+  }
+  @media (hover: hover) {
+    .team-card:hover {
+      --ease-state: var(--ease-out-quint);
+      z-index: 1;
+      transform: scale(1.05);
     }
   }
 
@@ -276,7 +271,7 @@ html.lenis body {
   .faq-icon {
     font-size: 1.5rem;
     line-height: 1;
-    color: var(--clay-strong);
+    color: var(--brass);
     transition: transform var(--dur-micro) var(--ease-out-quint);
   }
   [aria-expanded="true"] > .faq-icon {
@@ -309,7 +304,7 @@ html.lenis body {
   }
   .wa-float-btn {
     min-width: 2.75rem;
-    box-shadow: var(--shadow-cta), 0 0 0 2px var(--surface);
+    box-shadow: 0 0 0 2px var(--surface);
   }
 
   .btn-lg {
@@ -332,7 +327,7 @@ html.lenis body {
     color: var(--accent);
   }
   .btn-light::before {
-    background: var(--accent-soft);
+    background: var(--bg-2);
   }
 }
 
@@ -373,32 +368,8 @@ html.lenis body {
 .hero-word {
   display: inline-block;
 }
-.hero-blob {
-  border-radius: 46% 54% 42% 58% / 38% 40% 60% 62%;
-}
-.hero-float {
-  max-width: 11.5rem;
-  padding: 0.875rem 1.125rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-float);
-  font-size: var(--text-xs);
-  line-height: 1.4;
-  color: var(--muted);
-}
-.hero-float b {
-  display: block;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--ink);
-}
-
 /* Estado inicial do hero, só com movimento liberado. */
-html[data-motion="on"] [data-hero="eyebrow"],
-html[data-motion="on"] [data-hero="actions"],
-html[data-motion="on"] [data-hero="float"],
-html[data-motion="on"] [data-hero="seal"] {
+html[data-motion="on"] [data-hero="actions"] {
   opacity: 0;
 }
 /* Subtítulo e visual são candidatos a LCP: ficam visíveis no HTML e animam só transform. */
@@ -412,10 +383,9 @@ html[data-motion="on"] [data-hero="word"] {
   transform: translateY(110%);
 }
 
-/* Revelação em escada. Escondido só quando o movimento está liberado. */
+/* Revelação das seções: só opacity. Escondido só quando o movimento está liberado. */
 html[data-motion="on"] [data-reveal] {
   opacity: 0;
-  transform: translateY(26px);
 }
 
 /* Movimento reduzido: tudo posicionado, sem fade, só cor e foco. */

@@ -26,7 +26,6 @@ export interface Treatment {
 
 export interface Stat {
   value: number;
-  decimals?: number;
   suffix?: string;
   label: string;
   isPlaceholder: true;
@@ -64,7 +63,6 @@ export interface NavLink {
 
 export interface HeroWord {
   text: string;
-  emphasis?: boolean;
 }
 
 export const site = {
@@ -127,25 +125,24 @@ export const site = {
   },
 
   hero: {
-    eyebrow: "clínica odontológica completa",
     title: [
       { text: "Cuidado" },
       { text: "que" },
-      { text: "você", emphasis: true },
+      { text: "você" },
       { text: "sente" },
       { text: "desde" },
       { text: "a" },
       { text: "recepção." },
     ] satisfies HeroWord[],
     subtitle:
-      "Do planejamento digital ao pós-tratamento, uma equipe integrada cuida do seu sorriso em um ambiente calmo, discreto e sem pressa.",
-    primaryCta: "Falar com a equipe",
+      "Do planejamento digital ao pós-tratamento, uma equipe odontológica integrada cuida do seu sorriso em um ambiente calmo, discreto e sem pressa.",
+    descriptor: "Clínica odontológica",
+    primaryCta: "Agendar avaliação",
     secondaryCta: "Ver tratamentos",
     secondaryHref: "#tratamentos",
-    seal: { value: "12 anos", label: "de prática clínica", isPlaceholder: true },
     visualAlt: "Espaço reservado para foto da recepção da clínica",
     visualTag: "foto",
-    floatCards: [
+    captions: [
       { title: "Planejamento 3D", text: "Veja o plano antes de começar" },
       { title: "Agenda individual", text: "Atendimento com hora marcada" },
     ],
@@ -160,21 +157,13 @@ export const site = {
         label: "pacientes atendidos",
         isPlaceholder: true,
       },
-      {
-        value: 4.9,
-        decimals: 1,
-        label: "satisfação média",
-        isPlaceholder: true,
-      },
       { value: 8, label: "especialistas na equipe", isPlaceholder: true },
     ] satisfies Stat[],
     note: "Números de exemplo, a confirmar com o cliente.",
   },
 
   treatments: {
-    eyebrow: "tratamentos",
-    title: "Tudo o que seu sorriso precisa,",
-    titleEmphasis: "em um só lugar.",
+    title: "Tudo o que seu sorriso precisa, em um só lugar.",
     intro:
       "Uma equipe multidisciplinar trabalha em conjunto, para que você tenha um único plano e um único ponto de contato.",
     cta: "Saber mais",
@@ -235,9 +224,7 @@ export const site = {
   },
 
   method: {
-    eyebrow: "método",
-    title: "Um caminho claro,",
-    titleEmphasis: "sem pressa.",
+    title: "Um caminho claro, sem pressa.",
     steps: [
       {
         title: "Avaliação",
@@ -259,9 +246,7 @@ export const site = {
   },
 
   results: {
-    eyebrow: "resultados",
-    title: "Arraste e",
-    titleEmphasis: "compare.",
+    title: "Arraste e compare.",
     text: "Aqui entra o comparativo de antes e depois, com casos reais e autorização escrita do paciente.",
     // Fotos reais exigem autorização escrita do paciente e conferência das
     // regras de publicidade do conselho de odontologia. Revisar com o cliente.
@@ -275,9 +260,7 @@ export const site = {
   },
 
   team: {
-    eyebrow: "equipe",
-    title: "Quem cuida de você",
-    titleEmphasis: "de perto.",
+    title: "Quem cuida de você de perto.",
     note: "Equipe de exemplo, a confirmar com o cliente.",
     members: [
       {
@@ -303,12 +286,11 @@ export const site = {
       },
     ] satisfies TeamMember[],
     photoTag: "foto",
+    leadRole: "responsável técnico",
   },
 
   testimonials: {
-    eyebrow: "pacientes",
-    title: "O que dizem",
-    titleEmphasis: "sobre o atendimento.",
+    title: "O que dizem sobre o atendimento.",
     exampleLabel: "Depoimento de exemplo",
     items: [
       {
@@ -330,9 +312,7 @@ export const site = {
   },
 
   faq: {
-    eyebrow: "perguntas frequentes",
-    title: "Dúvidas",
-    titleEmphasis: "comuns.",
+    title: "Dúvidas comuns.",
     items: [
       {
         question: "O tratamento dói?",
@@ -374,8 +354,7 @@ export const site = {
   },
 
   cta: {
-    title: "Pronto para",
-    titleEmphasis: "começar?",
+    title: "Pronto para começar?",
     text: "Converse com a equipe pelo WhatsApp e reserve um horário de avaliação.",
     button: "Chamar no WhatsApp",
   },

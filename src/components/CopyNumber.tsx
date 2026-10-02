@@ -28,7 +28,7 @@ export function CopyNumber({ source }: { source: "fechamento" }) {
       <button
         type="button"
         onClick={copy}
-        className="min-h-11 rounded-sm px-2 py-2 underline underline-offset-4 transition-colors duration-micro ease-out-quint hover:text-on-accent "
+        className="min-h-11 rounded-photo px-2 py-2 underline underline-offset-4 transition-colors duration-micro ease-out-quint hover:text-on-accent "
       >
         {site.whatsapp.copyLabel}: {number}
       </button>

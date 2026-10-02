@@ -4,10 +4,11 @@ import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 /**
- * Revelação em escada. Marque os elementos com `data-reveal` dentro do
- * container que recebe o ref. Cada grupo que entra na tela aparece com fade
- * e subida de 26 px, com 80 ms entre irmãos, uma única vez, a 15% de visibilidade.
- * Com movimento reduzido nada é escondido nem animado.
+ * Revelação das seções. Marque os elementos com `data-reveal` dentro do
+ * container que recebe o ref. Cada grupo que entra na tela aparece só com
+ * opacity (sem subida), com 80 ms entre irmãos, uma única vez, a 15% de visibilidade.
+ * O hero é o único momento de movimento grande. Com movimento reduzido nada é
+ * escondido nem animado.
  */
 export function useReveal<T extends HTMLElement = HTMLElement>() {
   const ref = useRef<T>(null);
@@ -29,15 +30,13 @@ export function useReveal<T extends HTMLElement = HTMLElement>() {
           onEnter: (batch) => {
             gsap.fromTo(
               batch,
-              { opacity: 0, y: 26 },
+              { opacity: 0 },
               {
                 opacity: 1,
-                y: 0,
-                duration: 0.85,
-                ease: "power4.out", // quint: cauda mais suave que expo para deslocamentos curtos
+                duration: 0.7,
+                ease: "power2.out",
                 stagger: 0.08,
                 overwrite: true,
-                clearProps: "transform",
               },
             );
           },

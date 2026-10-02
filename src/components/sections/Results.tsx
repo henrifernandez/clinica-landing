@@ -60,18 +60,11 @@ export function Results() {
   };
 
   return (
-    <section
-      ref={root}
-      id="resultados"
-      className="bg-bg-2 py-20 md:py-30"
-    >
-      <Container className="grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
+    <section ref={root} id="resultados" className="bg-bg-2 py-24 md:py-30">
+      <Container className="grid items-center gap-10 lg:grid-cols-[5fr_7fr] lg:gap-20">
         <div data-reveal>
-          <span className="eyebrow">{results.eyebrow}</span>
-          <h2 className="mb-4 mt-4 text-h2">
-            {results.title} <em>{results.titleEmphasis}</em>
-          </h2>
-          <p className="max-w-[44ch] text-muted">{results.text}</p>
+          <h2 className="text-h2">{results.title}</h2>
+          <p className="mt-5 max-w-[40ch] text-muted">{results.text}</p>
         </div>
 
         <figure data-reveal className="m-0">
@@ -81,7 +74,7 @@ export function Results() {
             onPointerMove={onPointerMove}
             onPointerUp={stopDrag}
             onPointerCancel={stopDrag}
-            className="relative aspect-[4/3] cursor-ew-resize select-none overflow-hidden rounded-xl border border-line"
+            className="relative aspect-[4/3] cursor-ew-resize select-none overflow-hidden rounded-photo"
             style={{ touchAction: "pan-y" }}
           >
             {/* antes (base) */}
@@ -93,7 +86,7 @@ export function Results() {
               draggable={false}
               className="pointer-events-none absolute inset-0 h-full w-full object-cover"
             />
-            <span className="pointer-events-none absolute bottom-4 left-4 rounded-pill bg-ink/70 px-3 py-1 text-xs text-surface">
+            <span className="pointer-events-none absolute bottom-4 left-4 rounded-pill bg-scrim px-3 py-1 text-xs text-surface">
               {results.beforeLabel} · {results.exampleLabel}
             </span>
 
@@ -114,7 +107,7 @@ export function Results() {
                   draggable={false}
                   className="h-full w-full object-cover"
                 />
-                <span className="absolute bottom-4 right-4 rounded-pill bg-ink/70 px-3 py-1 text-xs text-surface">
+                <span className="absolute bottom-4 right-4 rounded-pill bg-scrim px-3 py-1 text-xs text-surface">
                   {results.afterLabel} · {results.exampleLabel}
                 </span>
               </div>
@@ -134,12 +127,23 @@ export function Results() {
               className="absolute inset-y-0 w-12 -translate-x-1/2 outline-offset-[-4px]"
               style={{ left: `${pos}%` }}
             >
-              <span className="absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2 bg-surface" />
+              <span className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-surface" />
               <span
                 aria-hidden="true"
-                className="absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-pill bg-surface text-accent shadow-float"
+                className="absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-pill bg-surface text-ink"
               >
-                ↔
+                <svg
+                  viewBox="0 0 20 20"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6.5 6l-4 4 4 4M13.5 6l4 4-4 4M3 10h14" />
+                </svg>
               </span>
             </div>
           </div>

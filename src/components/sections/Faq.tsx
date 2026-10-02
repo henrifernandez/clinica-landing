@@ -14,22 +14,17 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section ref={root} id="perguntas" className="py-20 md:py-30">
-      <Container className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
-        <SectionHead
-          eyebrow={faq.eyebrow}
-          title={faq.title}
-          emphasis={faq.titleEmphasis}
-          className="mb-0"
-        />
+    <section ref={root} id="perguntas" className="bg-bg-2 py-24 md:py-30">
+      <Container className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-20">
+        <SectionHead title={faq.title} className="mb-0" />
 
-        <div data-reveal className="border-t border-line">
+        <div data-reveal className="border-t border-line-strong">
           {faq.items.map((item, i) => {
             const isOpen = open === i;
             const buttonId = `${base}-b${i}`;
             const panelId = `${base}-p${i}`;
             return (
-              <div key={item.question} className="border-b border-line">
+              <div key={item.question} className="border-b border-line-strong">
                 <h3 className="font-sans text-base font-medium leading-normal tracking-normal">
                   <button
                     id={buttonId}
@@ -37,7 +32,7 @@ export function Faq() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex min-h-14 w-full items-center justify-between gap-4 py-4 text-left"
+                    className="flex min-h-[3.75rem] w-full items-center justify-between gap-4 py-4 text-left"
                   >
                     {item.question}
                     <span aria-hidden="true" className="faq-icon">

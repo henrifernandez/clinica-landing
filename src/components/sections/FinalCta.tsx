@@ -8,23 +8,23 @@ import { useReveal } from "@/hooks/useReveal";
 
 const { cta } = site;
 
+/** Faixa de largura total: título à esquerda, ação à direita. */
 export function FinalCta() {
   const root = useReveal<HTMLElement>();
 
   return (
-    <section ref={root} id="contato" className="pb-20 pt-10 md:pb-30">
-      <Container>
-        <div
-          data-reveal
-          className="on-dark rounded-xl bg-accent p-[clamp(2rem,1rem+6vw,6rem)] text-center text-on-accent"
-        >
-          <h2 className="mb-5 text-cta">
-            {cta.title} <em className="text-accent-soft">{cta.titleEmphasis}</em>
-          </h2>
-          <p className="mx-auto mb-10 max-w-[46ch] text-on-accent-muted">
-            {cta.text}
-          </p>
-          <WhatsAppLink source="fechamento" className="btn btn-light">
+    <section
+      ref={root}
+      id="contato"
+      className="on-dark bg-accent pb-20 pt-24 text-on-accent md:pb-24 md:pt-28"
+    >
+      <Container className="grid items-end gap-10 lg:grid-cols-[7fr_5fr] lg:gap-[4.5rem]">
+        <h2 data-reveal className="text-cta text-on-accent">
+          {cta.title}
+        </h2>
+        <div data-reveal>
+          <p className="mb-8 max-w-[40ch] text-on-accent-muted">{cta.text}</p>
+          <WhatsAppLink source="fechamento" className="btn btn-light btn-lg">
             {cta.button}
           </WhatsAppLink>
           <CopyNumber source="fechamento" />

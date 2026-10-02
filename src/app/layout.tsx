@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import { Figtree, Newsreader } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "@/styles/tokens.css";
 import "./globals.css";
@@ -10,19 +10,21 @@ import { MOTION_FLAG_SCRIPT } from "@/lib/motion";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/site-url";
 
-const fraunces = Fraunces({
+/* Títulos: Newsreader 400, sem itálico (a direção E não usa itálico de destaque). */
+const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["300", "400"],
-  style: ["normal", "italic"],
+  weight: ["400"],
+  style: ["normal"],
   display: "swap",
-  variable: "--font-fraunces",
+  variable: "--font-newsreader",
 });
 
-const dmSans = DM_Sans({
+/* Corpo e interface. */
+const figtree = Figtree({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   display: "swap",
-  variable: "--font-dm-sans",
+  variable: "--font-figtree",
 });
 
 const siteUrl = getSiteUrl();
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4efe7",
+  themeColor: "#f3eee6",
   width: "device-width",
   initialScale: 1,
 };
@@ -54,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${fraunces.variable} ${dmSans.variable}`}
+      className={`${newsreader.variable} ${figtree.variable}`}
       suppressHydrationWarning
     >
       <head>

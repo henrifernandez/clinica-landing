@@ -9,6 +9,11 @@ import { WhatsAppLink } from "@/components/WhatsAppLink";
 
 const { hero } = site;
 
+/**
+ * Hero: o único momento de movimento grande da página.
+ * Título entra por palavra (máscara), foto assenta de 1,06 para 1 e a foto
+ * tem parallax leve. Subtítulo e foto ficam visíveis no HTML (LCP) e animam só transform.
+ */
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const parallax = useRef<HTMLDivElement>(null);
@@ -23,18 +28,14 @@ export function Hero() {
 
       // Só roda com movimento liberado. Com reduce, o CSS já mostra o estado final.
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const out = "expo.out";
-        const tl = gsap.timeline({ defaults: { ease: out } });
+        const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
 
-        tl.fromTo(q("[data-hero=eyebrow]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, 0.1)
-          .fromTo(q("[data-hero=word]"), { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: 1.1, stagger: 0.07 }, 0.15)
-          .fromTo(q("[data-hero=visual-inner]"), { scale: 1.06 }, { scale: 1, duration: 1.5 }, 0.2)
-          .fromTo(q("[data-hero=lead]"), { y: 20 }, { y: 0, duration: 0.9 }, 0.6)
-          .fromTo(q("[data-hero=actions]"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.9 }, 0.8)
-          .fromTo(q("[data-hero=float]"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.12 }, 1.0)
-          .fromTo(q("[data-hero=seal]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, 1.3);
+        tl.fromTo(q("[data-hero=word]"), { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: 1.1, stagger: 0.07 }, 0.1)
+          .fromTo(q("[data-hero=visual-inner]"), { scale: 1.06 }, { scale: 1, duration: 1.5 }, 0.15)
+          .fromTo(q("[data-hero=lead]"), { y: 20 }, { y: 0, duration: 0.9 }, 0.55)
+          .fromTo(q("[data-hero=actions]"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.9 }, 0.75);
 
-        // Parallax leve, só transform, no máximo 50 px.
+        // Parallax leve da foto, só transform, no máximo 50 px.
         if (parallax.current) {
           gsap.to(parallax.current, {
             y: 50,
@@ -59,88 +60,88 @@ export function Hero() {
   return (
     <section
       ref={root}
-      className="hero relative flex min-h-[100svh] items-center pb-16 pt-28 md:pb-24 md:pt-36"
+      className="hero relative pb-16 pt-[calc(var(--nav-h)+2.5rem)] md:pb-20"
     >
-      <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+      <Container className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,.95fr)] lg:gap-[4.5rem]">
         <div>
-          <span data-hero="eyebrow" className="eyebrow">
-            {hero.eyebrow}
-          </span>
-
-          <h1 className="my-5 text-h1 md:my-6">
+          {/* avoid-ai-design-ignore: SD5 (cada palavra vai em um span só para a máscara de entrada, sem destaque visual) */}
+          <h1 className="mb-7 text-h1">
             {hero.title.map((w, i) => (
               <span key={i}>
                 <span className="hero-mask">
                   <span data-hero="word" className="hero-word">
-                    {"emphasis" in w && w.emphasis ? <em>{w.text}</em> : w.text}
+                    {w.text}
                   </span>
                 </span>{" "}
               </span>
             ))}
           </h1>
 
-          <p data-hero="lead" className="max-w-[46ch] text-base text-muted">
+          <p data-hero="lead" className="max-w-[46ch] text-lead text-muted">
             {hero.subtitle}
           </p>
 
-          <div data-hero="actions" className="mt-8 flex flex-wrap gap-3 md:mt-10">
-            <WhatsAppLink source="hero" className="btn">
-              {hero.primaryCta}
-            </WhatsAppLink>
-            <a href={hero.secondaryHref} className="btn btn-ghost">
-              {hero.secondaryCta}
-            </a>
+          <div data-hero="actions" className="mt-10">
+            <div className="flex flex-wrap gap-3">
+              <WhatsAppLink source="hero" className="btn btn-lg">
+                {hero.primaryCta}
+              </WhatsAppLink>
+              <a href={hero.secondaryHref} className="btn btn-ghost btn-lg">
+                {hero.secondaryCta}
+              </a>
+            </div>
+            {/* Identifica o tipo de negócio em texto, para não depender da foto. */}
+            <p className="mt-7 flex flex-wrap gap-x-2 gap-y-1 text-sm text-muted">
+              <span>
+                {hero.descriptor} em {site.clinic.city}
+              </span>
+              <span aria-hidden="true" className="hidden sm:inline">
+                ·
+              </span>
+              <span>{site.clinic.hours}</span>
+            </p>
           </div>
-
-          <p
-            data-hero="seal"
-            className="mt-8 flex items-baseline gap-3 text-xs text-muted md:mt-12"
-          >
-            <b className="font-serif text-2xl font-light leading-none text-ink">
-              {hero.seal.value}
-            </b>
-            <span>
-              {hero.seal.label} · {site.labels.example}
-            </span>
-          </p>
         </div>
 
+        {/* A foto sangra até a borda direita da tela. O sangramento é limitado a 11rem:
+            em telas muito largas ela para de tocar a borda e volta a ter o canto
+            direito arredondado, em vez de virar uma faixa horizontal. */}
         <div
           data-hero="visual"
-          className="relative mx-auto aspect-[4/5] w-full max-w-[26rem] lg:max-w-[30rem] lg:justify-self-end"
+          className="relative aspect-[4/5] w-full max-w-[32.5rem] overflow-hidden rounded-photo lg:w-auto lg:-mr-[min(11rem,calc((100vw-min(var(--container),100vw-var(--gutter)*2))/2))] lg:aspect-auto lg:h-[clamp(520px,calc(min(100svh,900px)-9rem),760px)] lg:max-w-none lg:rounded-r-none min-[1592px]:rounded-r-photo"
         >
-          <div className="hero-blob absolute inset-0 overflow-hidden bg-accent-soft">
-            <div ref={parallax} className="absolute inset-[-6%]">
-              <div data-hero="visual-inner" className="h-full w-full">
-                <Image
-                  src="/placeholders/hero.svg"
-                  alt={hero.visualAlt}
-                  width={800}
-                  height={1000}
-                  priority
-                  className="h-full w-full object-cover"
-                />
-              </div>
+          <div ref={parallax} className="absolute inset-[-6%]">
+            <div data-hero="visual-inner" className="h-full w-full">
+              <Image
+                src="/placeholders/hero.svg"
+                alt={hero.visualAlt}
+                width={800}
+                height={1000}
+                priority
+                className="h-full w-full object-cover"
+              />
             </div>
-            <span className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-pill bg-ink/70 px-3 py-1 text-xs text-surface">
-              {hero.visualTag}
-            </span>
           </div>
 
-          <div
-            data-hero="float"
-            className="hero-float absolute left-[-0.5rem] top-[18%] md:left-[-1.75rem]"
+          <span className="absolute left-5 top-5 rounded-pill bg-scrim px-3 py-1 text-xs text-surface">
+            {hero.visualTag} · {site.labels.example}
+          </span>
+
+          {/* Legendas planas, no lugar dos cartões flutuantes. */}
+          <ul
+            role="list"
+            className="absolute inset-x-0 bottom-0 grid border-t border-line bg-surface sm:grid-cols-2"
           >
-            <b>{hero.floatCards[0].title}</b>
-            {hero.floatCards[0].text}
-          </div>
-          <div
-            data-hero="float"
-            className="hero-float absolute bottom-[14%] right-[-0.5rem] md:right-[-0.875rem]"
-          >
-            <b>{hero.floatCards[1].title}</b>
-            {hero.floatCards[1].text}
-          </div>
+            {hero.captions.map((c) => (
+              <li
+                key={c.title}
+                className="px-5 py-3.5 text-xs leading-snug text-muted sm:[&:nth-child(2)]:border-l sm:[&:nth-child(2)]:border-line"
+              >
+                <b className="block text-sm font-medium text-ink">{c.title}</b>
+                {c.text}
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
     </section>

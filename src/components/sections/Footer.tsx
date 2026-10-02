@@ -23,9 +23,19 @@ function FooterButton({
         <span className="block">{label}</span>
         <span className="block text-xs font-normal text-muted">{hint}</span>
       </span>
-      <span aria-hidden="true" className="text-lg text-clay-strong">
-        ↗
-      </span>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 16 16"
+        width="16"
+        height="16"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M4.5 11.5l7-7M5.5 4.5h6v6" />
+      </svg>
       <span className="sr-only"> ({a11y.newTab})</span>
     </a>
   );
@@ -33,10 +43,10 @@ function FooterButton({
 
 export function Footer() {
   return (
-    <footer className="border-t border-line pb-24 pt-12 text-sm text-muted">
+    <footer className="pb-30 pt-16 text-sm text-muted">
       <Container className="grid gap-10 md:grid-cols-[1fr_1fr_1.1fr]">
         <div>
-          <p className="font-serif text-logo text-accent">{clinic.legalName}</p>
+          <p className="font-serif text-logo text-ink">{clinic.legalName}</p>
           <p className="mt-2">{clinic.cro}</p>
           <p>Responsável técnico: {clinic.responsible}</p>
         </div>

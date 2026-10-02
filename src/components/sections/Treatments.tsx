@@ -9,27 +9,21 @@ import { useReveal } from "@/hooks/useReveal";
 const { treatments } = site;
 
 /**
- * Direção D: estrutura de tabela da C, tokens da B.
+ * Estrutura de tabela numerada da direção D, com os tokens da E.
  * O hover (preenchimento, deslocamento e seta) vive em globals.css (.tr).
  */
 export function Treatments() {
   const root = useReveal<HTMLElement>();
 
   return (
-    <section ref={root} id="tratamentos" className="py-20 md:py-30">
+    <section ref={root} id="tratamentos" className="pb-24 pt-24 md:pt-36">
       <Container>
-        <SectionHead
-          eyebrow={treatments.eyebrow}
-          title={treatments.title}
-          emphasis={treatments.titleEmphasis}
-        >
-          {treatments.intro}
-        </SectionHead>
+        <SectionHead title={treatments.title}>{treatments.intro}</SectionHead>
 
         <ul
           role="list"
           data-reveal
-          className="overflow-hidden rounded-lg border border-line bg-surface"
+          className="overflow-hidden rounded-surface border border-line bg-surface"
         >
           {treatments.items.map((t, i) => (
             <li key={t.slug} className="border-b border-line last:border-b-0">
@@ -47,7 +41,18 @@ export function Treatments() {
                 <p className="tr-text">{t.summary}</p>
                 <span className="tr-time">{t.duration}</span>
                 <span aria-hidden="true" className="tr-arrow">
-                  ↗
+                  <svg
+                    viewBox="0 0 16 16"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4.5 11.5l7-7M5.5 4.5h6v6" />
+                  </svg>
                 </span>
               </WhatsAppLink>
             </li>
@@ -56,7 +61,7 @@ export function Treatments() {
 
         <div data-reveal className="mt-4 space-y-1 text-xs text-muted">
           <p className="flex items-center gap-2">
-            <i className="inline-block h-1.5 w-1.5 rounded-full bg-clay" aria-hidden="true" />
+            <i className="inline-block h-1.5 w-1.5 rounded-full bg-brass" aria-hidden="true" />
             {treatments.legend}
           </p>
           <p>{treatments.durationNote}</p>
