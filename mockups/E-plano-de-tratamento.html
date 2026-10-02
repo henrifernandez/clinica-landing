@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup E | Plano de tratamento (proposta, não aplicada ao código)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet">
+<style>
+/* Tokens da direção E, conforme DESIGN.md (rascunho). */
+:root{
+  --porcelana:#F5F5F2; --esmalte:#FCFCFA; --pedra:#E7E8E3;
+  --grafite:#1C2125; --suave:#555D5F; --verde:#2E4A3B; --fio:#B9BDB6;
+  --fio-claro:#D5D8D2;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --wrap:min(1240px,100% - 48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--porcelana);color:var(--grafite);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+.wrap{width:var(--wrap);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.04;letter-spacing:-.015em;color:var(--grafite)}
+h2{font-size:clamp(2.2rem,1.5rem + 3vw,3.7rem)}
+p{max-width:62ch}
+.muted{color:var(--suave)}
+
+/* botão: ação é a única função do verde */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:14px 28px;border-radius:999px;background:var(--verde);color:var(--esmalte);font-weight:500;font-size:.95rem;line-height:1.2;transition:color .25s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--grafite);transform:translateY(101%);transition:transform .25s var(--ease)}
+.btn:hover::before{transform:none}
+.btn.ghost{background:transparent;color:var(--grafite);box-shadow:inset 0 0 0 1px var(--fio)}
+.btn.ghost::before{background:var(--esmalte)}
+.btn.light{background:var(--esmalte);color:var(--verde)}
+.btn.light::before{background:var(--pedra)}
+.btn.lg{min-height:60px;padding:18px 32px;font-size:1rem}
+
+/* navegação: barra plana, camada real sobre o conteúdo */
+.nav{position:sticky;top:0;z-index:20;background:rgba(245,245,242,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--fio-claro)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:inline-flex;align-items:center;min-height:44px;font-family:var(--serif);font-size:1.5rem;font-weight:400;letter-spacing:-.01em}
+.menu{display:flex;gap:36px;font-size:.92rem;color:var(--suave)}
+.menu a{display:inline-flex;min-height:44px;align-items:center}
+.menu a:hover{color:var(--grafite)}
+
+/* hero: título e foto; a foto sangra até a borda direita */
+.hero{padding:40px 0 80px}
+.hero .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:72px;align-items:center;width:var(--wrap);margin-inline:auto}
+.hero h1{font-size:clamp(2.6rem,1.4rem + 3.6vw,5rem);margin-bottom:28px}
+.hero .lead{font-size:1.1rem;color:var(--suave);max-width:46ch}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.photo{position:relative;height:clamp(520px,calc(min(100svh,900px) - 140px),760px);border-radius:2px;overflow:hidden;background:linear-gradient(105deg,#d9dcd6 0%,#c4cac3 45%,#9aa59d 100%);margin-right:calc((100vw - min(1240px,100vw - 48px)) / -2)}
+.photo::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 38%),linear-gradient(0deg,rgba(28,33,37,.25),rgba(28,33,37,0) 45%)}
+.photo .tag{position:absolute;left:20px;top:20px;font-size:.78rem;color:var(--esmalte);background:rgba(28,33,37,.72);padding:4px 12px;border-radius:999px}
+.photo .arc{position:absolute;left:8%;right:8%;bottom:26%;width:84%;height:auto;opacity:.85}
+.captions{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;background:var(--esmalte);border-top:1px solid var(--fio-claro)}
+.captions div{padding:14px 20px;font-size:.84rem;color:var(--suave);line-height:1.4}
+.captions div+div{border-left:1px solid var(--fio-claro)}
+.captions b{display:block;color:var(--grafite);font-weight:500;font-size:.92rem}
+
+/* números: sem contagem animada, só o dado */
+.stats{border-block:1px solid var(--fio-claro);padding:56px 0 40px}
+.stats ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);width:var(--wrap);margin-inline:auto}
+.stats li{padding:0 28px;border-left:1px solid var(--fio-claro)}
+.stats li:first-child{padding-left:0;border-left:0}
+.stats b{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,1.6rem + 2.6vw,4rem);line-height:1;font-variant-numeric:tabular-nums}
+.stats span{display:block;margin-top:10px;font-size:.9rem;color:var(--suave)}
+.stats p{max-width:none;width:var(--wrap);margin:36px auto 0;font-size:.8rem;color:var(--suave)}
+
+section.block{padding:120px 0}
+.head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:72px;align-items:end;margin-bottom:64px}
+.head p{color:var(--suave);font-size:1rem}
+
+/* tratamentos: tabela da direção D, com os tokens da E */
+.tbl{list-style:none;background:var(--esmalte);border:1px solid var(--fio-claro);border-radius:8px;overflow:hidden}
+.tbl li+li{border-top:1px solid var(--fio-claro)}
+.tr{position:relative;isolation:isolate;display:grid;grid-template-columns:72px 1.1fr 1.3fr 150px 40px;gap:24px;align-items:center;padding:34px 36px;transition:color .35s var(--ease)}
+.tr::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--verde);transform:scaleY(0);transform-origin:bottom;transition:transform .45s var(--ease)}
+.tr:hover{color:var(--esmalte)}
+.tr:hover::before{transform:scaleY(1)}
+.tr .n{font-family:var(--serif);font-size:1.15rem;color:var(--suave);font-variant-numeric:tabular-nums;transition:color .35s var(--ease)}
+.tr .n.main::after{content:"";display:inline-block;width:6px;height:6px;margin-left:8px;vertical-align:middle;border-radius:50%;background:var(--grafite)}
+.tr h3{font-size:clamp(1.6rem,1.2rem + 1.6vw,2.4rem);transition:transform .45s var(--ease)}
+.tr:hover h3{transform:translateX(10px);color:var(--esmalte)}
+.tr p{font-size:.95rem;color:var(--suave);max-width:44ch;transition:color .35s var(--ease)}
+.tr .t{font-size:.84rem;color:var(--suave);font-variant-numeric:tabular-nums;transition:color .35s var(--ease)}
+.tr .arr{justify-self:end;font-size:1.3rem;color:var(--grafite);transition:transform .35s var(--ease),color .35s var(--ease)}
+.tr:hover .n,.tr:hover .arr,.tr:hover p,.tr:hover .t{color:rgba(252,252,250,.82)}
+.tr:hover .arr{transform:translate(4px,-4px)}
+.legend{margin-top:16px;font-size:.82rem;color:var(--suave);display:flex;gap:8px;align-items:center}
+.legend i{width:6px;height:6px;border-radius:50%;background:var(--grafite)}
+.legend+.legend{margin-top:2px}
+
+/* método: sequência real, único lugar onde números são ordem */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0 28px}
+.steps li{padding-top:24px;border-top:1px solid var(--grafite)}
+.steps .n{font-family:var(--serif);font-size:1.05rem;color:var(--suave);font-variant-numeric:tabular-nums}
+.steps h3{font-size:1.6rem;margin:10px 0}
+.steps p{font-size:.93rem;color:var(--suave);max-width:30ch}
+
+/* resultados: faixa de pedra, foto reta */
+.band{background:var(--pedra)}
+.res{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:center}
+.res p{color:var(--suave);max-width:40ch;margin-top:20px}
+.cmp{position:relative;aspect-ratio:4/3;border-radius:2px;overflow:hidden;user-select:none;touch-action:pan-y;cursor:ew-resize}
+.cmp .pane{position:absolute;inset:0}
+.cmp .before{background:linear-gradient(135deg,#cbc8bd,#b6b3a6)}
+.cmp .after{background:linear-gradient(135deg,#f6f6f2,#e3eae2);clip-path:inset(0 0 0 50%)}
+.cmp svg{position:absolute;left:12%;bottom:30%;width:76%}
+.cmp .lbl{position:absolute;bottom:16px;font-size:.78rem;color:var(--esmalte);background:rgba(28,33,37,.72);padding:3px 12px;border-radius:999px}
+.cmp .before .lbl{left:16px}.cmp .after .lbl{right:16px}
+.cmp .handle{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--esmalte)}
+.cmp .handle::after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--esmalte);display:grid;place-items:center;color:var(--grafite)}
+figcaption{margin-top:12px;font-size:.8rem;color:var(--suave)}
+
+/* equipe: o responsável técnico pesa mais */
+.team{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:20px;align-items:end}
+.card{background:var(--esmalte);border:1px solid var(--fio-claro);border-radius:8px;overflow:hidden}
+.card .ph{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#dfe2dc,#c9cec7)}
+.card.lead .ph{aspect-ratio:4/5}
+.card .ph svg{position:absolute;inset:auto 0 0 0;width:100%}
+.card .tag{position:absolute;left:16px;bottom:16px;font-size:.76rem;color:var(--esmalte);background:rgba(28,33,37,.72);padding:3px 12px;border-radius:999px}
+.card .info{padding:22px 24px 26px}
+.card h3{font-size:1.5rem}.card.lead h3{font-size:1.9rem}
+.card .info p{font-size:.9rem;color:var(--suave)}.card .info small{font-size:.8rem;color:var(--suave)}
+.note{margin-top:24px;font-size:.8rem;color:var(--suave)}
+
+/* depoimentos: uma voz em destaque, duas menores, sem caixas */
+.quotes{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:80px}
+.quote.big blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,1.2rem + 2vw,2.7rem);line-height:1.18;letter-spacing:-.01em;max-width:22ch}
+.quote span{display:block;margin-top:24px;font-size:.85rem;color:var(--suave)}
+.quote.side{padding:28px 0;border-top:1px solid var(--fio)}
+.quote.side:last-child{border-bottom:1px solid var(--fio)}
+.quote.side blockquote{font-family:var(--serif);font-weight:300;font-size:1.35rem;line-height:1.3}
+.quote.side span{margin-top:14px}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px}
+.faq details{border-bottom:1px solid var(--fio-claro)}
+.faq details:first-of-type{border-top:1px solid var(--fio-claro)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;cursor:pointer;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;font-weight:400;color:var(--grafite);transition:transform .2s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:22px;color:var(--suave);font-size:.95rem;max-width:56ch}
+
+/* fechamento: faixa cheia, texto à esquerda, ação à direita */
+.cta{background:var(--verde);color:var(--esmalte);padding:112px 0 104px;position:relative}
+.cta .arc{display:block;width:var(--wrap);margin:0 auto 56px;height:auto;opacity:.5}
+.cta .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:end;width:var(--wrap);margin-inline:auto}
+.cta h2{color:var(--esmalte);font-size:clamp(2.6rem,1.5rem + 3.8vw,4.6rem)}
+.cta p{color:rgba(252,252,250,.78);margin-bottom:32px;max-width:40ch}
+.cta .copy{margin-top:18px;font-size:.88rem;color:rgba(252,252,250,.78)}
+.cta .copy u{text-underline-offset:4px}
+
+footer{padding:64px 0 120px;font-size:.9rem;color:var(--suave)}
+footer .cols{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:40px;width:var(--wrap);margin-inline:auto}
+footer .nm{font-family:var(--serif);font-size:1.5rem;color:var(--grafite);margin-bottom:8px}
+.fbtn{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:68px;padding:12px 28px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--fio);color:var(--grafite);transition:background-color .25s var(--ease)}
+.fbtn+.fbtn{margin-top:12px}
+.fbtn:hover{background:var(--esmalte)}
+.fbtn b{display:block;font-weight:500}.fbtn small{display:block;font-size:.78rem;color:var(--suave)}
+footer .proto{width:var(--wrap);margin:40px auto 0;font-size:.78rem}
+
+.wa{position:fixed;right:20px;bottom:20px;z-index:30;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;background:var(--verde);color:var(--esmalte);border-radius:999px;font-weight:500;font-size:.92rem;box-shadow:0 0 0 2px var(--esmalte)}
+.wa i{width:8px;height:8px;border-radius:50%;background:#7fe3a1}
+
+/* entrada do hero: o único momento grande */
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero .lead,.hero .actions{animation:in .9s var(--ease) both}
+  .hero .lead{animation-delay:.25s}.hero .actions{animation-delay:.4s}
+  .photo{animation:fade 1.2s var(--ease) both .1s}
+  @keyframes in{from{opacity:0;transform:translateY(18px)}}
+  @keyframes fade{from{opacity:0}}
+}
+
+@media(max-width:960px){
+  .hero .grid,.head,.res,.quotes,.faq,.cta .grid{grid-template-columns:1fr;gap:40px}
+  .photo{margin-right:0;max-width:520px;height:auto;aspect-ratio:4/5}
+  .stats ul{grid-template-columns:1fr 1fr;row-gap:36px}
+  .stats li:nth-child(3){padding-left:0;border-left:0}
+  .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .team{grid-template-columns:1fr 1fr}.team .lead{grid-column:1/-1}
+  footer .cols{grid-template-columns:1fr}
+  .menu{display:none}
+  section.block{padding:88px 0}
+}
+@media(max-width:860px){
+  .tr{grid-template-columns:44px 1fr;gap:8px 14px;padding:26px 22px}
+  .tr p,.tr .t,.tr .arr{grid-column:2}.tr .arr{justify-self:start}
+}
+@media(max-width:560px){
+  .steps,.team{grid-template-columns:1fr}
+  .hero{padding:40px 0 64px}
+  .captions{grid-template-columns:1fr}.captions div+div{border-left:0;border-top:1px solid var(--fio-claro)}
+  .nav .btn{padding:12px 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#">Aurea</a>
+    <nav class="menu" aria-label="Navegação principal"><a href="#tratamentos">Tratamentos</a><a href="#metodo">Método</a><a href="#contato">Contato</a></nav>
+    <a class="btn" href="#contato">Agendar avaliação</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="grid">
+      <div>
+        <h1>Cuidado que você sente desde a recepção.</h1>
+        <p class="lead">Do planejamento digital ao pós-tratamento, uma equipe integrada cuida do seu sorriso em um ambiente calmo, discreto e sem pressa.</p>
+        <div class="actions">
+          <a class="btn lg" href="#contato">Agendar avaliação</a>
+          <a class="btn ghost lg" href="#tratamentos">Ver tratamentos</a>
+        </div>
+      </div>
+      <div class="photo" role="img" aria-label="Espaço reservado para foto da recepção da clínica">
+        <span class="tag">foto</span>
+        <!-- linha do sorriso: o fio de assinatura -->
+        <svg class="arc" viewBox="0 0 400 90" fill="none" aria-hidden="true"><path d="M6 14 Q200 112 394 14" stroke="#FCFCFA" stroke-width="1.25" stroke-linecap="round"/></svg>
+        <div class="captions">
+          <div><b>Planejamento 3D</b>Veja o plano antes de começar</div>
+          <div><b>Agenda individual</b>Atendimento com hora marcada</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Números da clínica">
+    <ul>
+      <li><b>12</b><span>anos de prática</span></li>
+      <li><b>4.800+</b><span>pacientes atendidos</span></li>
+      <li><b>4,9</b><span>satisfação média</span></li>
+      <li><b>8</b><span>especialistas na equipe</span></li>
+    </ul>
+    <p>Números de exemplo, a confirmar com o cliente.</p>
+  </section>
+
+  <section class="block" id="tratamentos">
+    <div class="wrap">
+      <div class="head">
+        <h2>Tudo o que seu sorriso precisa, em um só lugar.</h2>
+        <p>Uma equipe multidisciplinar trabalha em conjunto, para que você tenha um único plano e um único ponto de contato.</p>
+      </div>
+      <ul class="tbl">
+        <li><a class="tr" href="#contato"><span class="n main">01</span><h3>Lentes e facetas</h3><p>Desenho digital e aprovação do plano antes do preparo.</p><span class="t">3 a 4 sessões</span><span class="arr" aria-hidden="true">↗</span></a></li>
+        <li><a class="tr" href="#contato"><span class="n main">02</span><h3>Implantes</h3><p>Cirurgia guiada por tomografia, com plano individual.</p><span class="t">1 a 2 sessões</span><span class="arr" aria-hidden="true">↗</span></a></li>
+        <li><a class="tr" href="#contato"><span class="n main">03</span><h3>Ortodontia invisível</h3><p>Alinhadores planejados em 3D, com acompanhamento digital.</p><span class="t">6 a 18 meses</span><span class="arr" aria-hidden="true">↗</span></a></li>
+        <li><a class="tr" href="#contato"><span class="n main">04</span><h3>Harmonização</h3><p>Equilíbrio entre sorriso e face, conduzido por especialista.</p><span class="t">1 sessão</span><span class="arr" aria-hidden="true">↗</span></a></li>
+        <li><a class="tr" href="#contato"><span class="n">05</span><h3>Prevenção</h3><p>Check-up com imagem 3D e plano de manutenção sob medida.</p><span class="t">Semestral</span><span class="arr" aria-hidden="true">↗</span></a></li>
+      </ul>
+      <p class="legend"><i></i>Tratamentos de maior complexidade, com planejamento digital individual.</p>
+      <p class="legend">Durações de exemplo, revisar com o cliente.</p>
+    </div>
+  </section>
+
+  <section class="block" id="metodo" style="padding-top:24px">
+    <div class="wrap">
+      <div class="head" style="grid-template-columns:minmax(0,7fr) minmax(0,4fr)">
+        <h2>Um caminho claro, sem pressa.</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="n">01</span><h3>Avaliação</h3><p>Escaneamento, fotos e uma conversa sobre o que você quer para o seu sorriso.</p></li>
+        <li><span class="n">02</span><h3>Planejamento</h3><p>Plano digital com simulação, explicado com calma antes de qualquer decisão.</p></li>
+        <li><span class="n">03</span><h3>Execução</h3><p>Sessões objetivas, com conforto e hora marcada.</p></li>
+        <li><span class="n">04</span><h3>Manutenção</h3><p>Retornos programados para cuidar do resultado ao longo do tempo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block band" id="resultados">
+    <div class="wrap res">
+      <div>
+        <h2>Arraste e compare.</h2>
+        <p>Aqui entra o comparativo de antes e depois, com casos reais e autorização escrita do paciente.</p>
+      </div>
+      <figure>
+        <div class="cmp" id="cmp" role="img" aria-label="Comparativo de antes e depois, arraste para comparar">
+          <div class="pane before"><svg viewBox="0 0 400 90" fill="none"><path d="M6 14 Q200 112 394 14" stroke="#4b4a40" stroke-opacity=".55" stroke-width="1.25"/></svg><span class="lbl">antes · exemplo</span></div>
+          <div class="pane after" id="after"><svg viewBox="0 0 400 90" fill="none"><path d="M6 14 Q200 112 394 14" stroke="#2E4A3B" stroke-opacity=".7" stroke-width="1.25"/></svg><span class="lbl">depois · exemplo</span></div>
+          <div class="handle" id="handle"></div>
+        </div>
+        <figcaption>Imagem de exemplo, sem paciente real.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="equipe">
+    <div class="wrap">
+      <div class="head"><h2>Quem cuida de você de perto.</h2></div>
+      <div class="team">
+        <article class="card lead"><div class="ph" role="img" aria-label="Espaço reservado para foto do profissional"><svg viewBox="0 0 400 200" aria-hidden="true"><path d="M20 200 Q200 40 380 200Z" fill="#9aa59d" fill-opacity=".55"/></svg><span class="tag">foto</span></div><div class="info"><h3>Dr. Nome Sobrenome</h3><p>Implantodontia · responsável técnico</p><small>CRO 00000</small></div></article>
+        <article class="card"><div class="ph" role="img" aria-label="Espaço reservado para foto da profissional"><svg viewBox="0 0 400 200" aria-hidden="true"><path d="M20 200 Q200 40 380 200Z" fill="#9aa59d" fill-opacity=".55"/></svg><span class="tag">foto</span></div><div class="info"><h3>Dra. Nome Sobrenome</h3><p>Ortodontia</p><small>CRO 00000</small></div></article>
+        <article class="card"><div class="ph" role="img" aria-label="Espaço reservado para foto da profissional"><svg viewBox="0 0 400 200" aria-hidden="true"><path d="M20 200 Q200 40 380 200Z" fill="#9aa59d" fill-opacity=".55"/></svg><span class="tag">foto</span></div><div class="info"><h3>Dra. Nome Sobrenome</h3><p>Dentística estética</p><small>CRO 00000</small></div></article>
+      </div>
+      <p class="note">Equipe de exemplo, a confirmar com o cliente.</p>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:24px">
+    <div class="wrap">
+      <div class="head"><h2>O que dizem sobre o atendimento.</h2></div>
+      <div class="quotes">
+        <figure class="quote big"><blockquote>“Tudo explicado com calma. Eu sabia o que ia acontecer em cada etapa.”</blockquote><span>Paciente · Depoimento de exemplo</span></figure>
+        <div>
+          <figure class="quote side"><blockquote>“A clínica é tranquila e discreta. Perdi o receio de voltar ao dentista.”</blockquote><span>Paciente · Depoimento de exemplo</span></figure>
+          <figure class="quote side"><blockquote>“Fui ouvida desde a primeira conversa e o plano seguiu o que eu pedi.”</blockquote><span>Paciente · Depoimento de exemplo</span></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block band" id="perguntas">
+    <div class="wrap faq">
+      <h2>Dúvidas comuns.</h2>
+      <div>
+        <details><summary>O tratamento dói?</summary><p>Usamos anestesia e técnicas pensadas para o seu conforto. Você pode pedir uma pausa a qualquer momento durante o atendimento.</p></details>
+        <details><summary>Quanto tempo leva?</summary><p>Depende do tratamento e do seu caso. Na avaliação, a equipe apresenta um cronograma individual, com as etapas e os prazos previstos.</p></details>
+        <details><summary>Existe parcelamento?</summary><p>As condições de pagamento são apresentadas junto do plano de tratamento, na avaliação. Revisar formas de pagamento com o cliente.</p></details>
+        <details><summary>Quando posso começar?</summary><p>Depois da avaliação e da aprovação do plano. A equipe confirma os horários disponíveis pelo WhatsApp.</p></details>
+        <details><summary>Como funciona a avaliação?</summary><p>Uma conversa sobre seus objetivos, exame clínico e imagens digitais. Ao final, você recebe a explicação do que é indicado, sem compromisso.</p></details>
+        <details><summary>Vocês atendem convênio?</summary><p>Informe seu convênio ao falar com a equipe, que confirma as condições de atendimento. Revisar com o cliente.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contato">
+    <svg class="arc" viewBox="0 0 1200 70" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M0 6 Q600 96 1200 6" stroke="#FCFCFA" stroke-width="1"/></svg>
+    <div class="grid">
+      <h2>Pronto para começar?</h2>
+      <div>
+        <p>Converse com a equipe pelo WhatsApp e reserve um horário de avaliação.</p>
+        <a class="btn light lg" href="#">Chamar no WhatsApp</a>
+        <p class="copy"><u>Copiar número: +55 00 00000-0000</u></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="cols">
+    <div><p class="nm">Clínica Aurea</p><p>CRO 00000</p><p>Responsável técnico: Dr. Nome Sobrenome</p></div>
+    <div><p>Rua Exemplo, 000</p><p>São Paulo, SP</p><p style="margin-top:8px">Segunda a sexta, das 8h às 19h</p></div>
+    <div>
+      <a class="fbtn" href="#"><span><b>Ver no mapa</b><small>Como chegar</small></span><span aria-hidden="true">↗</span></a>
+      <a class="fbtn" href="#"><span><b>Instagram @aurea</b><small>Acompanhe a clínica</small></span><span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+  <p class="proto">Protótipo. Dados de contato, equipe e números são de exemplo.</p>
+</footer>
+
+<a class="wa" href="#"><i></i>Falar no WhatsApp</a>
+
+<script>
+const cmp=document.getElementById('cmp'),after=document.getElementById('after'),handle=document.getElementById('handle');let drag=false;
+function setPos(x){const r=cmp.getBoundingClientRect();const p=Math.max(0,Math.min(1,(x-r.left)/r.width))*100;after.style.clipPath='inset(0 0 0 '+p+'%)';handle.style.left=p+'%'}
+cmp.addEventListener('pointerdown',e=>{drag=true;cmp.setPointerCapture(e.pointerId);setPos(e.clientX)});
+cmp.addEventListener('pointermove',e=>{if(drag)setPos(e.clientX)});
+cmp.addEventListener('pointerup',()=>drag=false);
+</script>
+</body>
+</html>
