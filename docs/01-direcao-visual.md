@@ -7,11 +7,28 @@ Três direções foram prototipadas em `mockups/`. Escolha uma e marque abaixo. 
 - [ ] A, Editorial escuro de luxo
 - [ ] B, Clean clínico premium
 - [ ] C, Minimalismo arquitetônico
-- [x] D, Híbrido: B como base, com a seção de tratamentos da C (`mockups/D-hibrido-B-com-C.html`)
+- [ ] D, Híbrido: B como base, com a seção de tratamentos da C (`mockups/D-hibrido-B-com-C.html`). Substituída pela E em 02/10/2026.
+- [x] E, Plano de tratamento, tema "Luz natural" (`mockups/E-plano-de-tratamento.html` e `mockups/laboratorio-paleta-fonte.html`, tema B)
 
-Decisão do cliente em 01/10/2026. A direção B é a base de tudo (cores, fontes, formas, hero, antes e depois, método, depoimentos, fechamento). Da direção C entra apenas a estrutura da seção de tratamentos, descrita abaixo. A regra de não misturar tokens continua valendo, então nenhum token da C (laranja, Inter Tight, JetBrains Mono, bordas retas) é usado fora do que está listado na seção do híbrido.
+Decisão em 02/10/2026, depois da auditoria anti-IA e do teste de paleta e fonte. A direção D ficou genérica (palavra em itálico em todo título, rótulo acima de cada seção, creme com argila) e fria demais em sua versão testada. A direção E mantém a estrutura, as âncoras, a ordem das seções e a tabela de tratamentos da D, e muda a camada visual. Os tokens completos estão em `DESIGN.md`. A regra de não misturar tokens de direções diferentes continua valendo.
 
-## Direção D, B com tratamentos da C (direção ativa)
+## Direção E, plano de tratamento, tema Luz natural (direção ativa)
+
+Conceito. A página lê como um plano de tratamento bem diagramado: hierarquia de documento, números e durações em tabela, muito ar, nenhum enfeite que não informe. O calor vem do linho quente, da madeira clara e da luz natural, não de decoração.
+
+Cores (função). Linho `#F3EEE6` (fundo), esmalte `#FBF8F3` (superfícies elevadas), areia `#E8DFD1` (faixas), grafite quente `#2A2521` (texto), grafite suave `#625A50` (texto secundário), verde profundo `#2E4A3B` (único acento de ação), latão `#9A6B2F` (detalhe gráfico fino, nunca texto pequeno). Linhas `#DDD3C4` e `#C4B9A8`. Saem sálvia, argila e o creme anterior.
+
+Tipografia. Títulos em Newsreader 400 (sem itálico de destaque em palavra solta). Corpo e interface em Figtree 400, 500 e 600. Escala fluida com `clamp()` mantida.
+
+Formas. Foto com 12 px de raio, superfícies (tabela, cartões) com 16 px, botões em pílula.
+
+Layout. Grade larga de 1240 px, hero com a foto sangrando até a borda direita, cabeçalho de seção em duas colunas (título e introdução), ritmo vertical variado (mais ar antes de tratamentos, resultados e fechamento). Sem rótulo acima dos títulos. Fechamento em faixa de largura total, texto à esquerda e ação à direita.
+
+Movimento. Um único momento grande, o hero. O restante entra só com `opacity` curta, sem subida. Contagem animada de números removida.
+
+Removidos nesta direção: linha do sorriso, forma orgânica e cartões flutuantes no hero, selo "12 anos" no hero, palavra em itálico nos títulos, rótulo com traço acima das seções.
+
+## Direção D, B com tratamentos da C (substituída pela E)
 
 Base. Todos os tokens, fontes, raios e movimentos da direção B.
 

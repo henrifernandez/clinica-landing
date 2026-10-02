@@ -23,17 +23,17 @@ Lista gerada a partir de todos os campos marcados como placeholder (`isPlacehold
 
 | Item | Valor atual |
 |---|---|
-| Anos de prática (faixa de números e selo do hero) | 12 |
+| Anos de prática (faixa de números) | 12 |
 | Pacientes atendidos | 4.800+ |
-| Satisfação média | 4,9 |
 | Especialistas na equipe | 8 |
 
-Onde: `site.ts`, `stats.items` e `hero.seal`. Se algum número não puder ser comprovado, remova o item em vez de manter o exemplo.
+Onde: `site.ts`, `stats.items`. Se algum número não puder ser comprovado, remova o item em vez de manter o exemplo.
 
 ## Conteúdo clínico (revisar com o responsável técnico)
 
 - **Tratamentos:** a lista, a ordem de prioridade, as frases e as durações ("3 a 4 sessões", "1 a 2 sessões", "6 a 18 meses", "1 sessão", "Semestral") são exemplos. Local: `treatments.items`.
 - **Quais tratamentos levam o destaque de maior complexidade:** hoje os quatro primeiros. Local: campo `complex`.
+- **Legendas do hero** ("Planejamento 3D" e "Agenda individual"): afirmam equipamento e serviço que precisam ser confirmados. Local: `hero.captions`.
 - **Método:** as quatro etapas e suas frases. Local: `method.steps`.
 - **Perguntas frequentes:** as seis respostas. As de parcelamento e de convênio ainda trazem a observação "revisar com o cliente" dentro do texto e precisam ser reescritas antes da publicação. Local: `faq.items`.
 

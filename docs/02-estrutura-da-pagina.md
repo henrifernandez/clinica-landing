@@ -19,9 +19,9 @@ Página única, rolagem vertical, oito blocos. A ordem segue a jornada de quem d
 
 **1. Navegação.** Logo à esquerda, três âncoras (Tratamentos, Método, Contato) e botão de WhatsApp à direita. Fica transparente no topo e ganha fundo com blur após 40 px de scroll. No celular vira apenas logo e botão, sem menu hambúrguer, já que a página é curta.
 
-**2. Hero.** Título de uma frase com no máximo três linhas, subtítulo de até 25 palavras, botão principal e link secundário para a seção de tratamentos. Elemento visual característico (arco, forma orgânica ou faixa de fotos conforme a direção). Selo de credibilidade pequeno, como anos de prática. Este é o momento de movimento mais elaborado da página.
+**2. Hero.** Título de uma frase com no máximo três linhas, subtítulo de até 25 palavras, botão principal e link secundário para a seção de tratamentos. Elemento visual característico: na direção E, uma foto retangular que sangra até a borda direita, com legendas planas na base. Sem selo no hero. O tipo de negócio é dito em texto, não pela foto: "Odontologia" ao lado do nome na navegação, "equipe odontológica" no subtítulo e, abaixo dos botões, uma linha informativa "Clínica odontológica em São Paulo" com o horário (`hero.descriptor` mais `clinic`). Este é o momento de movimento mais elaborado da página.
 
-**3. Prova rápida.** Quatro números com contagem animada, por exemplo anos de prática, pacientes atendidos, satisfação e especialistas. Todos os valores vêm de `site.ts` e são marcados como exemplo até o cliente confirmar.
+**3. Prova rápida.** Três números estáticos (sem contagem animada), por exemplo anos de prática, pacientes atendidos e especialistas. "Satisfação média" ficou de fora por ser afirmação delicada pelas regras de publicidade. Todos os valores vêm de `site.ts` e são marcados como exemplo até o cliente confirmar.
 
 **4. Tratamentos.** Cinco itens, na ordem de valor para a clínica: lentes e facetas, implantes e reabilitação, ortodontia invisível, harmonização orofacial e prevenção. Cada item tem nome, uma frase, a duração estimada e um link que abre o WhatsApp com mensagem específica daquele tratamento. O formato é uma tabela de linhas numeradas (herdada da direção C, adaptada aos tokens da B), conforme a seção "Direção D" de `docs/01-direcao-visual.md`. Os quatro primeiros itens são marcados como tratamentos de maior complexidade.
 
@@ -37,7 +37,7 @@ Página única, rolagem vertical, oito blocos. A ordem segue a jornada de quem d
 
 Hero, direção A: "O sorriso certo é desenhado, não improvisado." Subtítulo: "Planejamento digital, materiais de última geração e um atendimento pensado para quem valoriza tempo, discrição e resultado duradouro."
 
-Hero, direção B (usada na direção ativa D): "Cuidado que você sente desde a recepção." Subtítulo: "Do planejamento digital ao pós-tratamento, uma equipe integrada cuida do seu sorriso em um ambiente calmo, discreto e sem pressa."
+Hero, direção B (usada na direção ativa D): "Cuidado que você sente desde a recepção." Subtítulo: "Do planejamento digital ao pós-tratamento, uma equipe odontológica integrada cuida do seu sorriso em um ambiente calmo, discreto e sem pressa."
 
 Hero, direção C: "Odontologia de precisão." Subtítulo: "Diagnóstico digital, planejamento 3D e execução com tolerância mínima."
 

@@ -13,8 +13,8 @@ Este guia explica, em linguagem simples, como trocar o conteúdo do site sem mex
 Abra `src/content/site.ts`. O arquivo é organizado por seção, na mesma ordem da página: `clinic`, `nav`, `hero`, `stats`, `treatments`, `method`, `results`, `team`, `testimonials`, `faq`, `cta` e `footer`.
 
 - **Nome, CRO, responsável técnico, endereço, horário e Instagram:** seção `clinic`.
-- **Título e subtítulo da primeira tela:** seção `hero`.
-- **Números da faixa de destaque** (anos, pacientes, satisfação, especialistas): seção `stats`, campo `value`.
+- **Título, subtítulo e linha "Clínica odontológica em ..." da primeira tela:** seção `hero` (`title`, `subtitle`, `descriptor`). A palavra "Odontologia" ao lado do nome na navegação vem de `clinic.specialty`.
+- **Números da faixa de destaque** (anos, pacientes, especialistas): seção `stats`, campo `value`. Mostre só números que você consiga comprovar.
 - **Tratamentos:** seção `treatments`. Cada item tem nome, frase, duração e a mensagem que abre no WhatsApp (`whatsappMessage`). Para adicionar um tratamento, copie um bloco existente e ajuste.
 - **Perguntas frequentes:** seção `faq`. Cada pergunta tem `question` e `answer`.
 

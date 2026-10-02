@@ -62,3 +62,15 @@ Registrar os plugins do GSAP uma única vez, em um componente cliente. Limpar Sc
 ## Revisão
 
 Depois de implementar, rodar `/revisar-animacoes` e corrigir tudo que vier como severidade média ou alta.
+
+## Ajustes da direção E (ativa desde 02/10/2026)
+
+O hero continua sendo o único momento grande. Mudanças em relação ao catálogo acima.
+
+- **Revelação em escada:** só `opacity` (700 ms, `power2.out`, 80 ms entre irmãos), sem subida. O movimento fica para o hero.
+- **Contador:** removido. Os números aparecem estáticos.
+- **Orquestração do hero:** sem eyebrow, sem selo e sem cartões flutuantes. Ordem: título por palavra (0.10 s), foto assentando de 1,06 para 1 (0.15 s), subtítulo (0.55 s), botões (0.75 s).
+- **Parallax:** mantido só na foto do hero, máximo de 50 px.
+- **Linha do sorriso:** removida do projeto.
+- **Cartões da equipe:** todos do mesmo tamanho. No hover (só com mouse, `@media (hover: hover)`) o cartão cresce para `scale(1.05)` em 250 ms, ease-out na entrada e ease-in na saída, e sobe de camada (`z-index`) para não ficar atrás do vizinho. Só `transform`, sem sombra. Classe `team-card` em `globals.css`.
+- Hover da tabela de tratamentos, botões, acordeão e botão flutuante seguem como no catálogo.
