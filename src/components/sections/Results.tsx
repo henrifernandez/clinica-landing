@@ -79,10 +79,11 @@ export function Results() {
           >
             {/* antes (base) */}
             <Image
-              src="/placeholders/antes.svg"
-              alt="Exemplo de situação inicial, imagem ilustrativa sem paciente real"
-              width={800}
-              height={600}
+              src="/placeholders/antes-ia.webp"
+              alt="Exemplo de situação inicial: sorriso com dentes amarelados e desalinhados. Imagem ilustrativa gerada por IA, sem paciente real"
+              width={1448}
+              height={1086}
+              sizes="(min-width: 1024px) 58vw, 100vw"
               draggable={false}
               className="pointer-events-none absolute inset-0 h-full w-full object-cover"
             />
@@ -100,10 +101,11 @@ export function Results() {
                 style={{ transform: `translateX(${-pos}%)` }}
               >
                 <Image
-                  src="/placeholders/depois.svg"
-                  alt="Exemplo de resultado, imagem ilustrativa sem paciente real"
-                  width={800}
-                  height={600}
+                  src="/placeholders/depois-ia.webp"
+                  alt="Exemplo de resultado: sorriso com dentes alinhados e em tom claro natural. Imagem ilustrativa gerada por IA, sem paciente real"
+                  width={1448}
+                  height={1086}
+                  sizes="(min-width: 1024px) 58vw, 100vw"
                   draggable={false}
                   className="h-full w-full object-cover"
                 />

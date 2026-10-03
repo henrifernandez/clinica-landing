@@ -41,10 +41,10 @@ Onde: `site.ts`, `stats.items`. Se algum número não puder ser comprovado, remo
 
 | Item | Situação | Exigência |
 |---|---|---|
-| Foto da recepção ou da clínica (hero) | placeholder `public/placeholders/hero.svg` | foto profissional |
+| Foto da recepção ou da clínica (hero) | imagem de exemplo gerada por IA, `public/placeholders/hero-consultorio-ia.webp` (só para o protótipo) | foto real da recepção do cliente. Tirar a etiqueta "imagem · exemplo" e reescrever o `alt` (`hero.visualAlt` em `site.ts`) |
 | Fotos da equipe | placeholder `public/placeholders/team.svg` | foto profissional e autorização de imagem |
 | Equipe: nomes, CRO e especialidades | três profissionais de exemplo | dados reais. Local: `team.members` |
-| Antes e depois | placeholders `antes.svg` e `depois.svg` | autorização escrita do paciente e conferência das regras de publicidade do conselho de odontologia |
+| Antes e depois | imagens de exemplo geradas por IA, `antes-ia.webp` e `depois-ia.webp` (só para demonstrar o slider, remover ou trocar antes do lançamento) | caso real, com autorização escrita do paciente e conferência das regras de publicidade do conselho de odontologia. O link do protótipo na Vercel é público, então manter as etiquetas "exemplo" |
 | Depoimentos | três textos de exemplo | autorização escrita de cada paciente. Local: `testimonials.items` |
 | Imagem de compartilhamento (Open Graph) | gerada automaticamente com nome e slogan | opcional: trocar por foto ou arte da clínica |
 

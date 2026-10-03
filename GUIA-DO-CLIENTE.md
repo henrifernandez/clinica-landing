@@ -28,14 +28,14 @@ As imagens de exemplo estão em `public/placeholders/`:
 
 | Arquivo | Onde aparece |
 |---|---|
-| `hero.svg` | primeira tela (proporção 4 por 5) |
+| `hero-consultorio-ia.webp` | primeira tela (proporção 4 por 5). Imagem de exemplo gerada por IA, só para o protótipo |
 | `team.svg` | cartões da equipe (proporção 4 por 5) |
-| `antes.svg` e `depois.svg` | comparativo de antes e depois (proporção 4 por 3) |
+| `antes-ia.webp` e `depois-ia.webp` | comparativo de antes e depois (proporção 4 por 3). Imagens de exemplo geradas por IA, só para o protótipo |
 
 Para usar uma foto real:
 
 1. Salve a foto em `public/` (por exemplo `public/fotos/recepcao.jpg`), em boa qualidade e com no máximo 2000 px no lado maior.
-2. No arquivo do componente (`src/components/sections/Hero.tsx`, `Team.tsx` ou `Results.tsx`), troque o caminho em `src="/placeholders/hero.svg"` por `src="/fotos/recepcao.jpg"`.
+2. No arquivo do componente (`src/components/sections/Hero.tsx`, `Team.tsx` ou `Results.tsx`), troque o caminho em `src="/placeholders/hero-consultorio-ia.webp"` por `src="/fotos/recepcao.jpg"`.
 3. Ajuste o texto `alt` para descrever a foto de verdade, e retire o rótulo "foto".
 
 Fotos de pacientes e o antes e depois só podem entrar com **autorização escrita do paciente** e depois de conferidas as regras de publicidade do conselho de odontologia.

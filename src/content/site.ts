@@ -140,8 +140,9 @@ export const site = {
     primaryCta: "Agendar avaliação",
     secondaryCta: "Ver tratamentos",
     secondaryHref: "#tratamentos",
-    visualAlt: "Espaço reservado para foto da recepção da clínica",
-    visualTag: "foto",
+    visualAlt:
+      "Imagem ilustrativa de um consultório odontológico claro, com cadeira de tratamento estofada e armários de carvalho, gerada por IA como exemplo",
+    visualTag: "imagem",
     captions: [
       { title: "Planejamento 3D", text: "Veja o plano antes de começar" },
       { title: "Agenda individual", text: "Atendimento com hora marcada" },
@@ -250,7 +251,7 @@ export const site = {
     text: "Aqui entra o comparativo de antes e depois, com casos reais e autorização escrita do paciente.",
     // Fotos reais exigem autorização escrita do paciente e conferência das
     // regras de publicidade do conselho de odontologia. Revisar com o cliente.
-    note: "Imagem de exemplo, sem paciente real.",
+    note: "Imagens de exemplo geradas por IA, sem paciente real.",
     sliderLabel:
       "Comparativo de antes e depois. Use as setas do teclado para mover.",
     beforeLabel: "antes",

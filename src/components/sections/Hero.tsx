@@ -113,11 +113,13 @@ export function Hero() {
           <div ref={parallax} className="absolute inset-[-6%]">
             <div data-hero="visual-inner" className="h-full w-full">
               <Image
-                src="/placeholders/hero.svg"
+                src="/placeholders/hero-consultorio-ia.webp"
                 alt={hero.visualAlt}
-                width={800}
-                height={1000}
+                width={1122}
+                height={1402}
+                sizes="(min-width: 1024px) 46vw, (min-width: 640px) 32.5rem, calc(100vw - 3rem)"
                 priority
+                fetchPriority="high"
                 className="h-full w-full object-cover"
               />
             </div>
