@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia de imagens do site</title>
+<style>
+  :root {
+    --linho: #F3EEE6; --esmalte: #FBF8F3; --areia: #E8DFD1; --grafite: #2A2521;
+    --suave: #625A50; --verde: #2E4A3B; --latao: #9A6B2F; --fio: #DDD3C4; --fio-forte: #C4B9A8;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--linho); color: var(--grafite); font: 400 1rem/1.65 var(--sans); }
+  .wrap { width: min(60rem, 100% - 2rem); margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; margin: 0; }
+  h1 { font-size: clamp(2rem, 1.2rem + 3vw, 3.2rem); }
+  h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.1rem); margin-bottom: 1rem; }
+  h3 { font-size: 1.35rem; }
+  p { margin: 0 0 .75rem; }
+  ul, ol { margin: 0 0 .75rem; padding-left: 1.25rem; }
+  li { margin-bottom: .35rem; }
+  a { color: var(--verde); }
+  .muted { color: var(--suave); }
+  header.top { padding: 3rem 0 2rem; }
+  header.top p { max-width: 46ch; font-size: 1.125rem; color: var(--suave); margin-top: 1rem; }
+  section { padding: 2.5rem 0; border-top: 1px solid var(--fio); }
+  .grid3 { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .box { background: var(--esmalte); border: 1px solid var(--fio); border-radius: 1rem; padding: 1.25rem; }
+  .badge { display: inline-block; font-size: .8125rem; font-weight: 600; padding: .2rem .75rem; border-radius: 999px; margin-bottom: .6rem; }
+  .b-ia { background: #DCE6DF; color: #1F3A2C; }
+  .b-real { background: #F0DDBF; color: #5C3E12; }
+  .b-des { background: var(--areia); color: var(--grafite); }
+  .box h3 { margin-bottom: .5rem; }
+  .steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: .75rem; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 2.25rem 1fr; gap: .9rem; background: var(--esmalte); border: 1px solid var(--fio); border-radius: 1rem; padding: 1rem 1.25rem; margin: 0; }
+  .steps li::before { content: counter(s); font-family: var(--serif); font-size: 1.6rem; color: var(--latao); line-height: 1.2; }
+  .steps b { font-weight: 600; }
+
+  .item { display: grid; gap: 1.5rem; margin-top: 1.5rem; background: var(--esmalte); border: 1px solid var(--fio); border-radius: 1rem; padding: 1.5rem; }
+  @media (min-width: 52rem) { .item { grid-template-columns: 15rem 1fr; } }
+  .diagram { display: grid; gap: .6rem; align-content: start; justify-items: center; }
+  .caption { font-size: .8125rem; color: var(--suave); text-align: center; max-width: 16rem; }
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; margin: 0 0 1rem; font-size: .9375rem; }
+  .facts dt { color: var(--suave); }
+  .facts dd { margin: 0; }
+  h4 { font: 600 .9375rem/1.3 var(--sans); margin: 1.25rem 0 .4rem; }
+
+  /* Miniaturas */
+  .page { width: 15rem; border: 1px solid var(--fio-forte); border-radius: .5rem; background: var(--linho); padding: .5rem; display: grid; gap: .4rem; }
+  .bar { height: .5rem; border-radius: 2px; background: var(--areia); }
+  .page .row { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .lines { display: grid; gap: .3rem; align-content: center; }
+  .lines i { display: block; height: .4rem; background: var(--fio-forte); border-radius: 2px; }
+  .lines i:first-child { height: .8rem; width: 85%; background: var(--grafite); opacity: .55; }
+  .hl { background: #E9D2A8; border: 2px solid var(--latao); border-radius: 4px; position: relative; }
+  .hl small { position: absolute; inset: auto 0 .25rem 0; text-align: center; font-size: .625rem; font-weight: 600; color: #5C3E12; }
+  .safe { position: relative; width: 11rem; aspect-ratio: 4 / 5; background: #E9D2A8; border: 2px solid var(--latao); border-radius: .5rem; }
+  .safe .zone { position: absolute; inset: 14% 10% 24% 10%; border: 2px dashed var(--verde); border-radius: .35rem; display: grid; place-items: center; text-align: center; font-size: .6875rem; font-weight: 600; color: var(--verde); line-height: 1.25; padding: .25rem; }
+  .safe .tag { position: absolute; top: .4rem; left: .4rem; font-size: .5625rem; background: rgba(42,37,33,.75); color: #fff; padding: .1rem .4rem; border-radius: 999px; }
+  .safe .band { position: absolute; left: 0; right: 0; bottom: 0; height: 18%; background: rgba(251,248,243,.9); border-top: 1px solid var(--fio-forte); display: grid; place-items: center; font-size: .625rem; color: var(--suave); border-radius: 0 0 .4rem .4rem; }
+  .cards3 { display: grid; grid-template-columns: repeat(3, 4rem); gap: .4rem; }
+  .cards3 div { aspect-ratio: 4 / 5; }
+  .person { position: relative; background: #E9D2A8; border: 2px solid var(--latao); border-radius: .35rem; overflow: hidden; }
+  .person::before { content: ""; position: absolute; left: 50%; top: 22%; width: 38%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: var(--latao); opacity: .55; }
+  .person::after { content: ""; position: absolute; left: 14%; right: 14%; bottom: -18%; height: 42%; border-radius: 50% 50% 0 0; background: var(--latao); opacity: .55; }
+  .ba { position: relative; width: 14rem; aspect-ratio: 4 / 3; background: #E9D2A8; border: 2px solid var(--latao); border-radius: .5rem; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+  .ba span { display: grid; place-items: end center; padding-bottom: .4rem; font-size: .6875rem; font-weight: 600; color: #5C3E12; }
+  .ba span:last-child { background: rgba(255,255,255,.35); }
+  .ba::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--esmalte); }
+  .logo { display: grid; place-items: center; width: 11rem; height: 5rem; background: #E9D2A8; border: 2px solid var(--latao); border-radius: .5rem; font-family: var(--serif); font-size: 1.6rem; }
+  .logo small { font: 400 .8125rem var(--sans); color: var(--suave); margin-left: .4rem; }
+
+  /* Prompts */
+  .prompt { position: relative; background: var(--linho); border: 1px solid var(--fio-forte); border-radius: .75rem; padding: 1rem 1rem 1rem 1rem; margin: .5rem 0 1rem; }
+  .prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 400 .875rem/1.55 ui-monospace, "Cascadia Mono", Consolas, monospace; padding-right: 0; }
+  .prompt .gloss { margin: .6rem 0 0; font-size: .875rem; color: var(--suave); }
+  .copy { font: 600 .875rem var(--sans); color: var(--esmalte); background: var(--verde); border: 0; border-radius: 999px; padding: .5rem 1.1rem; min-height: 2.75rem; cursor: pointer; margin-bottom: .6rem; }
+  .copy:hover { background: var(--grafite); }
+  .copy:focus-visible { outline: 3px solid var(--latao); outline-offset: 2px; }
+  .note { border-left: 3px solid var(--latao); background: #F7EBD3; padding: .75rem 1rem; border-radius: 0 .5rem .5rem 0; font-size: .9375rem; margin: 1rem 0; }
+  details { background: var(--linho); border: 1px solid var(--fio-forte); border-radius: .75rem; padding: .75rem 1rem; margin: .5rem 0 1rem; }
+  summary { cursor: pointer; font-weight: 600; min-height: 2.75rem; display: flex; align-items: center; }
+  .check { list-style: none; padding: 0; }
+  .check li::before { content: "✓"; color: var(--verde); font-weight: 700; margin-right: .6rem; }
+  footer { padding: 2rem 0 4rem; border-top: 1px solid var(--fio); color: var(--suave); font-size: .875rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Guia de imagens do site</h1>
+  <p>O que ainda falta, quem faz cada imagem e como pedir. Em ordem, sem pular etapa.</p>
+</header>
+
+<section aria-labelledby="resumo">
+  <h2 id="resumo">Resumo em 30 segundos</h2>
+  <p>O site tem poucas imagens. Cada uma tem um responsável. A IA serve para a foto do topo e, só para demonstrar o slider, para o antes e depois. No site final, quase tudo precisa ser real.</p>
+  <div class="grid3">
+    <div class="box">
+      <span class="badge b-ia">A IA pode fazer</span>
+      <h3>Foto do topo</h3>
+      <p class="muted">Só para mostrar o protótipo ao cliente. No site final, entra a foto real da clínica.</p>
+    </div>
+    <div class="box">
+      <span class="badge b-real">Precisa ser real</span>
+      <h3>Equipe, antes e depois, clínica</h3>
+      <p class="muted">No site final, pessoas e resultados reais. IA aqui engana o paciente e pode violar as regras do conselho. Só o antes e depois aceita um par de IA, para demonstrar o protótipo.</p>
+    </div>
+    <div class="box">
+      <span class="badge b-des">Designer</span>
+      <h3>Logo e ícone da aba</h3>
+      <p class="muted">Precisa ser arquivo vetorial. Gerador de imagem não entrega isso com qualidade.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="passos">
+  <h2 id="passos">Passo a passo</h2>
+  <ol class="steps">
+    <li><div><b>Gere a foto do topo com IA</b> (seção 1 abaixo) para ter algo bonito na apresentação ao cliente. Ela continua marcada como "exemplo" no site.</div></li>
+    <li><div><b>Mande a mensagem pronta ao cliente</b> (seção 6). Ela pede, em linguagem simples, tudo o que precisa ser real.</div></li>
+    <li><div><b>Receba as fotos</b> e confira com a lista da seção 7 (formato, luz, nitidez).</div></li>
+    <li><div><b>Me envie os arquivos.</b> Eu troco no site, escrevo o texto alternativo, removo a etiqueta "exemplo" e deixo as imagens leves.</div></li>
+  </ol>
+</section>
+
+<section aria-labelledby="hero">
+  <h2 id="hero">1. Foto do topo da página</h2>
+
+  <div class="item">
+    <div class="diagram">
+      <div class="page" aria-hidden="true">
+        <div class="bar"></div>
+        <div class="row">
+          <div class="lines"><i></i><i></i><i></i><i></i></div>
+          <div class="hl" style="min-height:6.5rem"><small>FOTO</small></div>
+        </div>
+      </div>
+      <div class="safe" aria-hidden="true">
+        <span class="tag">foto · exemplo</span>
+        <div class="zone">assunto principal aqui</div>
+        <div class="band">legendas</div>
+      </div>
+      <p class="caption">A foto aparece grande, à direita do título. As duas áreas marcadas ficam cobertas por texto, então deixe o assunto no meio.</p>
+    </div>
+
+    <div>
+      <span class="badge b-ia">A IA pode fazer (só no protótipo)</span>
+      <dl class="facts">
+        <dt>O que é</dt><dd>Imagem do ambiente da clínica. O consultório deixa claro que é odontologia.</dd>
+        <dt>Formato</dt><dd>Vertical, como uma foto de celular em pé. Proporção 4:5.</dd>
+        <dt>Tamanho</dt><dd>2000 × 2500 px (mínimo 1600 × 2000).</dd>
+        <dt>No site final</dt><dd>Foto real do consultório ou da recepção do cliente.</dd>
+      </dl>
+
+      <div class="note"><b>Por que a IA só no protótipo:</b> a foto mostra o ambiente da clínica. Se o paciente chegar e o lugar for outro, é propaganda enganosa. Por isso a versão de IA serve para apresentar, não para publicar.</div>
+
+      <h4>Como gerar</h4>
+      <ol>
+        <li>Abra um gerador de imagens (ChatGPT, Gemini, Midjourney, Ideogram ou Leonardo).</li>
+        <li>Cole o texto abaixo. Escolha formato vertical (4:5, ou o mais próximo, como 3:4 ou 2:3). Para o hero, a opção A (consultório) é a recomendada.</li>
+        <li>Peça 4 versões e fique com a mais natural. Descarte a que tiver equipamento estranho, texto ou rosto.</li>
+      </ol>
+
+      <h4>Opção A: consultório (recomendada: deixa claro que é odontologia)</h4>
+      <div class="prompt">
+        <button class="copy" type="button" data-copy="p-hero-a">Copiar texto</button>
+        <pre id="p-hero-a">Editorial interior photograph of a bright minimal dental treatment room. Pale linen blinds, light oak cabinetry, an off-white upholstered treatment chair, simple discreet equipment, no screens. Soft natural daylight from the left, warm off-white and sand tones, shallow depth of field, 35mm lens, subtle film grain, calm mood. No people. Vertical 4:5, main subject centered. Avoid: text, logos, drills, gloves, masks, blue or teal lighting, chrome instruments, neon.</pre>
+        <p class="gloss">Em português: consultório claro e simples, com cadeira de tratamento. É a imagem que mais rápido mostra que é uma clínica odontológica. A IA às vezes inventa aparelhos esquisitos, então confira os detalhes.</p>
+      </div>
+
+      <h4>Opção B: recepção (mais acolhedora, combina com o título)</h4>
+      <div class="prompt">
+        <button class="copy" type="button" data-copy="p-hero-b">Copiar texto</button>
+        <pre id="p-hero-b">Editorial interior photograph of the reception area of a calm private dental clinic. Rounded light oak reception desk, off-white linen sofa, one deep green armchair, a ceramic vase with dried branches, a small brass lamp, warm plaster walls, a tall window with a sheer curtain. Soft natural daylight from the left, warm off-white and sand tones, shallow depth of field, 35mm lens, subtle film grain, quiet and premium but understated. No people. Vertical 4:5 composition with the main subject in the center. Avoid: text, logos, signs, blue or teal clinical lighting, chrome tools, close-ups of teeth, neon, oversaturated colors.</pre>
+        <p class="gloss">Em português: recepção calma, balcão de carvalho claro, sofá de linho, uma poltrona verde, luz natural de janela, sem pessoas e sem texto.</p>
+      </div>
+
+      <h4>Opção C: só atmosfera (não finge ser a clínica)</h4>
+      <div class="prompt">
+        <button class="copy" type="button" data-copy="p-hero-c">Copiar texto</button>
+        <pre id="p-hero-c">Still life photograph on a pale oak table next to a window: a glass of water, a folded linen napkin, a small ceramic dish and a sprig of olive. Long soft shadows, soft natural daylight, warm off-white and sand tones, shallow depth of field, 35mm lens, subtle film grain, very calm. Vertical 4:5, subject centered. Avoid: text, logos, people, oversaturated colors.</pre>
+        <p class="gloss">Em português: natureza-morta com copo d'água, guardanapo de linho e uma folha de oliveira. Como não mostra um lugar, pode até ficar no site final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="equipe">
+  <h2 id="equipe">2. Fotos da equipe</h2>
+
+  <div class="item">
+    <div class="diagram">
+      <div class="cards3" aria-hidden="true">
+        <div class="person"></div><div class="person"></div><div class="person"></div>
+      </div>
+      <p class="caption">Três cartões do mesmo tamanho. No celular a foto vira quadrada, cortando as laterais, então o rosto fica no centro.</p>
+    </div>
+
+    <div>
+      <span class="badge b-real">Precisa ser real</span>
+      <dl class="facts">
+        <dt>O que é</dt><dd>Um retrato de cada profissional.</dd>
+        <dt>Formato</dt><dd>Vertical, 4:5. Busto para cima, cabeça no terço de cima.</dd>
+        <dt>Tamanho</dt><dd>1600 × 2000 px (mínimo 1200 × 1500).</dd>
+        <dt>Quantidade</dt><dd>Uma por profissional. O layout se adapta a 1, 2, 3, 4 ou mais pessoas.</dd>
+      </dl>
+
+      <div class="note"><b>Por que não pode ser IA:</b> são pessoas com registro no conselho (CRO). Um rosto inventado com o nome de um dentista de verdade, ou como se fosse da clínica, engana o paciente. Cada pessoa também precisa assinar a autorização de uso de imagem.</div>
+
+      <h4>Como pedir ao fotógrafo</h4>
+      <ul class="check">
+        <li>Mesmo fundo liso e claro nas três fotos (parede bege ou branca).</li>
+        <li>Mesma luz, de preferência de janela, no mesmo dia.</li>
+        <li>Mesmo enquadramento: do peito para cima, olhando para a câmera.</li>
+        <li>Sem filtro, sem plaquinha de nome e sem texto na imagem.</li>
+      </ul>
+
+      <details>
+        <summary>Só para a apresentação: retratos de exemplo feitos por IA</summary>
+        <p class="muted">Use apenas para mostrar o protótipo. Nunca publique no ar como se fossem a equipe de verdade. Gere o primeiro e, nos outros dois, envie o primeiro como imagem de referência, para os três ficarem parecidos.</p>
+        <div class="prompt">
+          <button class="copy" type="button" data-copy="p-team">Copiar texto</button>
+          <pre id="p-team">Shoulders-up portrait of a dentist, [DESCRIPTION]. Off-white linen-look clinical tunic, no name tag. Calm warm expression with a soft closed-lip smile. Plain warm sand-colored wall behind, soft natural window light from the left, head in the upper middle of the frame, centered. Realistic photograph, 85mm lens, shallow depth of field, natural skin texture. Vertical 4:5. Avoid: text, logos, stethoscope, stock-photo look, plastic skin, extra fingers.</pre>
+          <p class="gloss">Troque [DESCRIPTION] por: "man in his early 50s with short graying hair", depois "woman in her late 40s with hair tied back" e "woman in her early 30s".</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="ba">
+  <h2 id="ba">3. Antes e depois</h2>
+
+  <div class="item">
+    <div class="diagram">
+      <div class="ba" aria-hidden="true"><span>antes</span><span>depois</span></div>
+      <p class="caption">O visitante arrasta a linha do meio para comparar. As duas fotos precisam ter exatamente o mesmo enquadramento.</p>
+    </div>
+
+    <div>
+      <span class="badge b-real">Real no site final, e só com aprovação</span>
+      <dl class="facts">
+        <dt>O que é</dt><dd>Duas fotos do mesmo paciente: antes e depois do tratamento.</dd>
+        <dt>Formato</dt><dd>Horizontal, 4:3.</dd>
+        <dt>Tamanho</dt><dd>2000 × 1500 px (mínimo 1600 × 1200), as duas iguais.</dd>
+        <dt>Hoje</dt><dd>Duas imagens abstratas, marcadas "exemplo". Para mostrar o slider ao cliente, dá para usar o par de demonstração abaixo.</dd>
+      </dl>
+
+      <div class="note"><b>Real no site final.</b> Um resultado gerado por IA é um resultado inventado, e o conselho de odontologia limita a divulgação de antes e depois, mesmo com foto real. Antes de publicar, o responsável técnico confirma as regras e o paciente assina uma autorização escrita. <b>Para demonstrar o slider ao cliente</b>, um par de IA é aceitável, com três cuidados: mantenha os rótulos "antes · exemplo" e "depois · exemplo"; o link do protótipo na Vercel é público, então só compartilhe com o cliente; e troque pelo caso real (ou remova o slider) antes do lançamento.</div>
+
+      
+      <h4>Par de demonstração por IA (só protótipo)</h4>
+      <p class="muted">A IA costuma fazer dentes perfeitos demais, e duas imagens separadas nunca terão o mesmo rosto. Por isso o truque é gerar o "antes" e depois pedir ao gerador que <b>edite a mesma imagem</b> para fazer o "depois". Isso funciona no ChatGPT e no Gemini: anexe a imagem do "antes" e cole o segundo texto.</p>
+
+      <p><b>Passo 1: o antes</b></p>
+      <div class="prompt">
+        <button class="copy" type="button" data-copy="p-before">Copiar texto</button>
+        <pre id="p-before">Close-up photograph of the lower half of an adult's face, from just under the nose to the chin, in a natural relaxed smile showing the upper front teeth. Teeth in a slightly yellowed natural shade, mild crowding of the front teeth and one slightly rotated incisor, realistic gum line, natural lips and skin texture. Soft natural daylight from the left, neutral warm background, shallow depth of field, 100mm macro lens, realistic documentary dental photography. Horizontal 4:3, subject centered. Avoid: exaggerated damage, missing teeth, cartoonish look, braces, retractors, text, watermark.</pre>
+        <p class="gloss">Em português: close-up do sorriso de um adulto, da base do nariz ao queixo, com dentes levemente amarelados e um pouco desalinhados, de forma natural e sem exagero.</p>
+      </div>
+
+      <p><b>Passo 2: o depois (anexe a imagem do passo 1)</b></p>
+      <div class="prompt">
+        <button class="copy" type="button" data-copy="p-after">Copiar texto</button>
+        <pre id="p-after">Edit the attached photo. Keep exactly the same person, lips, skin, expression, lighting, background, framing and crop. Change only the teeth: make them evenly aligned and a natural light ivory shade, not bright white, keeping natural texture, translucency and a realistic gum line. Do not change anything else. Avoid: Hollywood-white teeth, uniform fake-looking veneers, a different face, a different angle, text.</pre>
+        <p class="gloss">Em português: edite a mesma foto, mantendo pessoa, luz e enquadramento, e mude apenas os dentes: alinhados e em um marfim claro natural, sem branco artificial.</p>
+      </div>
+      <p class="muted">Se o "depois" mudar o rosto ou o enquadramento, peça de novo ("mantenha exatamente o mesmo enquadramento") até as duas imagens ficarem alinhadas. Se o "antes" vier com dentes perfeitos, acrescente "photo taken with a phone, slightly imperfect teeth".</p>
+
+      <h4>Como pedir ao fotógrafo</h4>
+      <ul class="check">
+        <li>Mesmo ângulo, mesma distância e mesma luz nas duas fotos.</li>
+        <li>Mesmo fundo, sem filtro e sem edição de dentes ou pele.</li>
+        <li>Autorização do paciente assinada antes de enviar qualquer arquivo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="logo">
+  <h2 id="logo">4. Logo e ícone da aba</h2>
+
+  <div class="item">
+    <div class="diagram">
+      <div class="logo" aria-hidden="true">Aurea<small>Odontologia</small></div>
+      <p class="caption">Hoje é só o nome em texto, no canto da página. "Aurea" é um nome provisório.</p>
+    </div>
+
+    <div>
+      <span class="badge b-des">Designer</span>
+      <dl class="facts">
+        <dt>O que é</dt><dd>A marca da clínica, no topo da página e no ícone da aba do navegador.</dd>
+        <dt>Formato</dt><dd>Arquivo vetorial: SVG, ou PDF ou AI que eu converto.</dd>
+        <dt>Versões</dt><dd>Para fundo claro e, se possível, para fundo escuro.</dd>
+        <dt>Ícone da aba</dt><dd>Sai da logo: versão quadrada, só o símbolo ou a inicial.</dd>
+      </dl>
+      <p class="muted">Se o cliente ainda não tem logo, a decisão do nome vem primeiro, depois a logo. Gerador de imagem produz rascunho com letras deformadas, então o resultado final deve vir de um designer.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="og">
+  <h2 id="og">5. Imagem de compartilhamento (opcional)</h2>
+  <div class="box">
+    <span class="badge b-ia">Já resolvido, melhorar é opcional</span>
+    <p>É a imagem que aparece quando alguém manda o link do site no WhatsApp ou no Instagram. Hoje o site gera uma automaticamente, com o nome e o slogan. Funciona e não precisa de ação sua.</p>
+    <p>Se quiser uma mais bonita depois, pode trocar o fundo por uma foto real da clínica (1200 × 630 px, horizontal). Se usar IA, gere só o fundo, sem texto, porque o nome e o slogan eu coloco por código.</p>
+    <div class="prompt">
+      <button class="copy" type="button" data-copy="p-og">Copiar texto</button>
+      <pre id="p-og">Abstract soft-focus detail of sunlight on a linen curtain and light oak, warm off-white and sand tones, very calm, with a large empty area on the left side. Horizontal 1200x630. Avoid: text, logos, people.</pre>
+      <p class="gloss">Em português: detalhe suave de luz do sol em cortina de linho e madeira clara, com espaço vazio à esquerda para o texto.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="msg">
+  <h2 id="msg">6. Mensagem pronta para o cliente</h2>
+  <p class="muted">Copie, ajuste o nome e mande no WhatsApp. Peça que as fotos venham como "documento", para o WhatsApp não comprimir.</p>
+  <div class="prompt">
+    <button class="copy" type="button" data-copy="p-msg">Copiar mensagem</button>
+    <pre id="p-msg">Olá! Para finalizarmos o site, precisamos de algumas fotos reais da clínica. Segue o resumo:
+
+1) Recepção: uma foto na vertical (celular em pé), com luz natural, sem pessoas e sem cartazes ou preços à vista.
+
+2) Equipe: um retrato de cada profissional, do peito para cima, no mesmo lugar e com a mesma luz, com a autorização de uso de imagem assinada.
+
+3) Antes e depois (opcional, só se o responsável técnico aprovar as regras do conselho): fotos do mesmo paciente, no mesmo ângulo, distância e luz, com autorização escrita do paciente.
+
+4) Logo da clínica em arquivo vetorial (SVG, PDF ou AI), se já existir.
+
+Pode enviar como documento no WhatsApp, em tamanho original, ou por e-mail ou Drive. Obrigado!</pre>
+  </div>
+</section>
+
+<section aria-labelledby="ok">
+  <h2 id="ok">7. A foto serve? Confira antes de me enviar</h2>
+  <ul class="check">
+    <li>Tem a orientação certa (hero e equipe em pé, antes e depois deitada).</li>
+    <li>Tem pelo menos 1600 px na maior medida. Foto de celular moderno já atende.</li>
+    <li>Está nítida, com luz natural, sem filtro e sem texto escrito na imagem.</li>
+    <li>O assunto está no centro, longe das bordas.</li>
+    <li>Para pessoas, existe autorização de uso de imagem assinada.</li>
+  </ul>
+  <div class="note"><b>O que eu faço quando você mandar:</b> coloco os arquivos no projeto, troco no site, escrevo o texto alternativo (para leitores de tela e Google), removo a etiqueta "foto · exemplo", reduzo o peso para o site continuar rápido e confiro no celular e no computador.</div>
+</section>
+
+<footer>Os textos prontos para gerar imagens estão em inglês porque os geradores entendem melhor assim. Cada um traz a explicação em português logo abaixo.</footer>
+</div>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var text = el.textContent;
+      var done = function () {
+        btn.textContent = 'Copiado';
+        setTimeout(function () { btn.textContent = label; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+      }
+    });
+  });
+</script>
+</body>
+</html>
