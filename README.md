@@ -11,7 +11,7 @@ Landing page pensada para converter visitas em contatos por WhatsApp, construíd
 
 ## Como foi construído
 
-O projeto foi planejado antes de ser codado. Os mockups em `mockups/` compararam várias direções visuais (a escolhida foi a `D-hibrido-B-com-C.html`), os documentos em `docs/` registram briefing, estrutura, animações e entrega, e a sequência em `prompts/` guiou a implementação com o Claude Code, do kickoff ao deploy. O `CLAUDE.md` guarda o contexto fixo do projeto.
+O projeto foi planejado antes de ser codado. Os mockups em `mockups/` compararam várias direções visuais (a ativa é a E, "plano de tratamento" no tema Luz natural, em `E-plano-de-tratamento.html`), os documentos em `docs/` registram briefing, estrutura, animações e entrega, e a sequência em `prompts/` guiou a implementação com o Claude Code, do kickoff ao deploy. O `CLAUDE.md` guarda o contexto fixo do projeto.
 
 ## Conteúdo
 
